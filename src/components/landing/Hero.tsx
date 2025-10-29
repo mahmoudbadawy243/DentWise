@@ -5,7 +5,7 @@ import Image from "next/image";
 
 function Hero() {
   return (
-    <section className="relative flex items-center overflow-hidden pt-28 md:pt-34">
+    <section className="relative flex items-center overflow-hidden pt-28 md:pt-34 ">
       {/* GRID BG  */}
       <div className="absolute inset-0 bg-linear-to-br from-background via-muted/5 to-primary/5">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)] opacity-20"></div>
@@ -17,7 +17,7 @@ function Hero() {
 
       <div className="relative z-10 w-full px-6">
         <div className="max-w-7xl mx-auto text-center md:text-left">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
+          <div className="grid lg:grid-cols-2 gap-20 items-center pb-10">
             {/* LEFT CONTENT */}
             <div className="space-y-10">
               <div className="space-y-6">
@@ -111,7 +111,7 @@ function Hero() {
                   </div>
 
                   {/* RATING AND STATS */}
-                  <div className="space-y-1">
+                  <div className="space-y-1 ">
                     <div className="flex items-center gap-2">
                       <div className="flex items-center gap-1">
                         {[1, 2, 3, 4, 5].map((star) => (
