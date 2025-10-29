@@ -40,7 +40,20 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ##### "tweakcn" is site that i can choose color-system for my shadcn project
 
+--------------------------------------------------
 
+##### Add cursor pointer to buttons by default - this is coming from tailwind docs - write in "globals.css"
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+--------------------------------------------------
+
+######
 
 
 
