@@ -53,7 +53,13 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 --------------------------------------------------
 
+###### to apply dark mode of color-system only >>> goto "layout.tsx" and write "dark" as attribute for "body" tag 
+
+--------------------------------------------------
+
 ######
+
+--------------------------------------------------
 
 
 
