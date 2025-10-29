@@ -57,9 +57,38 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 --------------------------------------------------
 
-######
+###### using icons easly from "npm install lucide-react" 
 
 --------------------------------------------------
+
+###### to solve the problem of images that is used in nextjs , goto "next.config.ts" and write the code
+const nextConfig: NextConfig = {
+  /* config options here */
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https", // http or https
+        hostname: "images.unsplash.com", // name of site of images
+      },
+    ], }, }; 
+
+--------------------------------------------------
+
+###### 
+
+--------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
