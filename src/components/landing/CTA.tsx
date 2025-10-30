@@ -4,7 +4,7 @@ import { MicIcon, CalendarIcon } from "lucide-react";
 
 function CTA() {
   return (
-    <section className="relative py-20 px-6 overflow-hidden bg-linear-to-br from-muted/10 via-background to-muted/5 text-center md:text-left">
+    <section className="relative py-20 px-6 overflow-hidden bg-linear-to-br from-muted/10 via-background to-muted/5 text-center md:text-left" id="contact">
       {/* Subtle Background Pattern */}
       <div className="absolute inset-0 bg-[radial-linear(circle_at_center,hsl(var(--primary)/0.03),transparent_70%)]"></div>
 

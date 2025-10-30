@@ -193,6 +193,10 @@ body {
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @keyframes sound-wave {
   0% {
     height: 10%;

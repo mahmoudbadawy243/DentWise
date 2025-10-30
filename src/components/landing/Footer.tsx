@@ -1,6 +1,16 @@
+"use client"
 import Image from "next/image";
-
+import { Button } from "../ui/button";
+import { ArrowBigUpIcon } from "lucide-react";
 function Footer() {
+
+const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <footer className="px-6 py-12 border-t bg-muted/30">
       <div className="max-w-6xl mx-auto">
@@ -87,6 +97,13 @@ function Footer() {
 
         <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
           <p>&copy; 2024 DentWise. Built for real people with real dental questions.</p>
+        <Button 
+          onClick={scrollToTop}
+          className="relative bottom-10 left-310 w-12 h-12 rounded-full bg-accent text-primary-foreground flex items-center justify-center shadow-md hover:bg-primary/30 transition-all duration-300"
+          aria-label="Scroll to top"
+        >
+          <ArrowBigUpIcon className="size-8 text-primary/90"/>
+        </Button>
         </div>
       </div>
     </footer>
