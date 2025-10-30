@@ -5,7 +5,7 @@ import Image from "next/image";
 
 function Hero() {
   return (
-    <section className="relative flex items-center overflow-hidden pt-28 md:pt-34 ">
+    <section className="relative flex items-center overflow-hidden pt-28 md:pt-26 ">
       {/* GRID BG  */}
       <div className="absolute inset-0 bg-linear-to-br from-background via-muted/5 to-primary/5">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)] opacity-20"></div>
@@ -17,9 +17,9 @@ function Hero() {
 
       <div className="relative z-10 w-full px-6">
         <div className="max-w-7xl mx-auto text-center md:text-left">
-          <div className="grid lg:grid-cols-2 gap-20 items-center pb-10">
+          <div className="grid lg:grid-cols-2 gap-18 items-center pb-10">
             {/* LEFT CONTENT */}
-            <div className="space-y-10">
+            <div className="space-y-6 mt-[-10px]">
               <div className="space-y-6">
                 {/* BADGE */}
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-linear-to-r from-primary/10 to-primary/5 rounded-full border border-primary/20 backdrop-blur-sm">
@@ -141,7 +141,7 @@ function Hero() {
                 alt="DentWise AI"
                 width={550}
                 height={550}
-                className="md:mt-[-150] mt-[-100]"
+                className="md:mt-[-110] mt-[-100]"
               />
             </div>
           </div>
