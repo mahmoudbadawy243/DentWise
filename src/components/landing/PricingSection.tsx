@@ -96,7 +96,7 @@ function PricingSection() {
                   <p className="text-muted-foreground">AI consultations + appointment booking</p>
                 </div>
 
-                <Button className="w-full py-3 bg-primary/80 hover:accent/50 hover:text-white/60 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
+                <Button className="w-full py-3 bg-primary/80 hover:bg-accent/80 hover:text-primary/80 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
                   Start AI Basic
                 </Button>
 
