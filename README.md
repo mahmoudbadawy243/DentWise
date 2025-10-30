@@ -74,7 +74,23 @@ const nextConfig: NextConfig = {
 
 --------------------------------------------------
 
-###### 
+###### Create Prisma
+
+=== npm i prisma --save-dev      // for development
+=== npm i @prisma/client@6.16.2  // for production
+=== npx prisma init
+
+=== in "schema.prisma" file of "prisma" folder write my schema and tables
+
+=== "npx prisma generate"         // to generate client
+
+=== "npx prisma db push"          // to create tables in database
+
+=== i delete "output" attribute from "schema.prisma" file
+=== i delete folder "prisma.config.ts"
+
+
+
 
 --------------------------------------------------
 
