@@ -89,16 +89,27 @@ const nextConfig: NextConfig = {
 === i delete "output" attribute from "schema.prisma" file
 === i delete folder "prisma.config.ts"
 
+--------------------------------------------------
 
+###### when user signIn or signUp with clerk >>> saving this data in neon database  
 
+=== 2 methodes to apply that >>> "webHooks" which is the better way , "userSync server action" that i used in this app
+
+=== i create "prisma.ts" in 
+    the purpose of this file and code is to create instance of prisma to interact with it
+    i search in google "nextjs prisma best practice" and copy code and paste in this file
+
+=== i create a folder "actions" in "lib" folder then create "user.ts" file
+    the purpose of this file is to create server actions where i can implement syncUser to create user in database
+
+=== i create "UserSync.ts" file in "components" folder where i call userSync function
+
+=== in "layout.tsx" file i wrapped the chidren with "UserSync" component 
+    to run automatically when app start to run to apply "userSync" concept
 
 --------------------------------------------------
 
-
-
-
-
-
+######
 
 
 
