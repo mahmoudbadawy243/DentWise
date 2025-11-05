@@ -109,8 +109,15 @@ const nextConfig: NextConfig = {
 
 --------------------------------------------------
 
-######
+###### TanStack Query
 
+=== npm i @tanstack/react-query
+=== in "components" folder create "providers" folder then create "TanStackProvider.tsx" file
+=== search on google "tanstack query nextjs router" then from docs of tanStack from initial setup
+    copy code and paste in "TanStackProvider.tsx" file
+=== in "layout.tsx" file i wrapped the all children with "TanStackProvider" component
+
+--------------------------------------------------
 
 
 
