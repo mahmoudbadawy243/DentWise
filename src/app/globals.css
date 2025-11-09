@@ -198,6 +198,7 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ---------------------------- */
 @keyframes sound-wave {
   0% {
     height: 10%;
@@ -213,3 +214,4 @@ html {
 .animate-sound-wave {
   animation: sound-wave 1.2s ease-in-out infinite;
 }
+/* ---------------------------- */

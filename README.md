@@ -119,8 +119,13 @@ const nextConfig: NextConfig = {
 
 --------------------------------------------------
 
+####### Vapi AI
 
-
+=== goto vapi site
+=== create "NEXT_PUBLIC_VAPI_API_KEY" and "NEXT_PUBLIC_VAPI_ASSISTANT_ID" and write them in ".env" file
+ to "web calls" especially client-side and create assistant and get assistant id
+=== to install vapi >>> "npm i @vapi-ai/web"
+=== in lib folder create "vapi.ts" file to create instance of vapi
 
 
 
