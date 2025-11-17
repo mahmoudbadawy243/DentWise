@@ -128,8 +128,17 @@ const nextConfig: NextConfig = {
 === in lib folder create "vapi.ts" file to create instance of vapi
 
 
+--------------------------------------------------
 
+####### Resend
 
+=== "npm i @react-email/components" "npm i resend" "@react-email/render"
+=== create instance of resend by creating "resend.ts" file in "lib" folder and paste code from resend site
+=== create "RESEND_API_KEY" in ".env" file
+=== create end-point by creating "api" folder in this name in "app" folder
+    then create "send-appoint-email" folder in "api" folder
+    then create "route.ts" in this name
+=== in develop case i can only recieve email on gmail that i loggin with it in resend site
 
 
 
