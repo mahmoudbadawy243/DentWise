@@ -2,6 +2,7 @@ import { SignInButton, SignUpButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "../ui/button";
+import ToogleSwitch from "./toogle switch/ToogleSwitch";
 
 async function Header() { 
 
@@ -30,6 +31,7 @@ async function Header() {
 
         <div className="flex items-center gap-3">
 
+          <ToogleSwitch />
           <SignInButton mode="modal">
             <Button variant={"ghost"} size={"sm"}>
               Login

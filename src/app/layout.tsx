@@ -5,6 +5,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import UserSync from "@/components/UserSync";
 import TanStackProvider from "@/components/providers/TanStackProvider";
 import { Toaster } from "sonner";
+import { ThemeProvider } from "@/components/providers/theme-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,12 +32,17 @@ export default function RootLayout({
     <TanStackProvider>
     <ClerkProvider >
       <html lang="en">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased dark`}
-          >
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased `}>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
             <UserSync />
             <Toaster />
           {children}
+            </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
