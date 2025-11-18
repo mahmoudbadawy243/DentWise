@@ -7,6 +7,8 @@ import { useUser } from "@clerk/nextjs";
 import { SettingsIcon } from "lucide-react"
 import AdminStats from "@/components/admin/AdminStats";
 import DoctorsManagement from "@/components/admin/DoctorsManagement";
+import RecentAppointments from "@/components/admin/RecentAppointments";
+import AdminPageLoading from "@/components/admin/AdminPageLoading";
 
 function AdminDashboardClient() {
 
@@ -22,7 +24,7 @@ function AdminDashboardClient() {
     completedAppointments: appointments.filter( (appointment) => appointment.status === "COMPLETED" ).length,
   }
 
-  if(doctorsLoading || appointmentsLoading) return <p>Loading...</p>
+  if(doctorsLoading || appointmentsLoading) return <AdminPageLoading />
   return (
     <div className="min-h-screen bg-background">
         <Navbar />
@@ -61,6 +63,9 @@ function AdminDashboardClient() {
           />
         
         <DoctorsManagement />
+
+        <RecentAppointments />
+
         </div>
 
     </div>

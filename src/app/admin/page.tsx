@@ -14,7 +14,7 @@ async function AdminPage() {
 
   // if user not admin
   if (userEmail !== adminEmail) redirect("/dashboard")
-  
+
   // "AdminDashboardClient" where client server parts will run in it like navbar and some UI
   return <AdminDashboardClient />
 }
