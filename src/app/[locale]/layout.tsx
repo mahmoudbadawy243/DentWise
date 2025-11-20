@@ -6,7 +6,9 @@ import UserSync from "../../components/UserSync";
 import TanStackProvider from "../../components/providers/TanStackProvider";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "../../components/providers/theme-provider";
-import { Directions, Languages, Locale } from "../../i18n.config";
+import { Directions, Languages } from "../../i18n.config";
+
+type LanguageType = 'en' | 'ar'
 
 // for localization
 export async function generateStaticParams() {
@@ -36,7 +38,7 @@ export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: LanguageType }>;
 }>) {
 
   const locale = (await params).locale;
