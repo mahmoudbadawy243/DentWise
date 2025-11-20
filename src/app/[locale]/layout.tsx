@@ -38,10 +38,10 @@ export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-  params: Promise<{ locale: LanguageType }>;
+  params: { locale: string };
 }>) {
-
-  const locale = (await params).locale;
+  const localeCandidate = params.locale;
+  const locale: LanguageType = localeCandidate === Languages.ARABIC ? 'ar' : 'en';
 
   return (
     <TanStackProvider>
