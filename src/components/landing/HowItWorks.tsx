@@ -2,30 +2,33 @@ import { SignUpButton } from "@clerk/nextjs";
 import { ArrowRightIcon, ZapIcon } from "lucide-react";
 import Image from "next/image";
 import { Button } from "../ui/button";
+import getTrans from "@/lib/translation";
+import { getCurrentLocale } from "@/lib/getCurrentLocale";
 
-function HowItWorks() {
+async function HowItWorks() {
+  const locale = await getCurrentLocale();
+  const dict = await getTrans(locale);
   return (
     <section className="relative pt-32 pb-10 px-6 z-10 max-w-7xl mx-auto" id="how-it-works" >
       {/* HEADER */}
       <div className="text-center mb-20 space-y-10">
         <div className="inline-flex items-center gap-2 px-4 py-2 bg-linear-to-r from-primary/5 to-primary/10 rounded-full border border-primary/10 backdrop-blur-sm mb-6">
           <ZapIcon className="size-4 text-primary" />
-          <span className="text-sm font-medium text-primary">Simple Process</span>
+          <span className="text-sm font-medium text-primary">{dict.howItWorks.badge}</span>
         </div>
 
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
           <span className="bg-linear-to-br from-foreground to-foreground/70 bg-clip-text text-transparent">
-            Three steps to
+            {dict.howItWorks.headingLine1}
           </span>
           <br />
           <span className="bg-linear-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-            better dental health
+            {dict.howItWorks.headingLine2}
           </span>
         </h2>
 
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-          Our streamlined process makes dental care accessible, convenient, and stress-free for
-          everyone
+          {dict.howItWorks.description}
         </p>
       </div>
 
@@ -45,22 +48,22 @@ function HowItWorks() {
 
               {/* Icon */}
               <div className="w-20 h-20 bg-linear-to-br from-primary/10 to-primary/5 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 mb-6">
-                <Image src="/audio.png" alt="Voice Chat" width={40} height={40} className="w-14" />
+                <Image src="/graudio.png" alt="Voice Chat" width={40} height={40} className="w-14 dark:hidden" />
+                <Image src="/audio.png" alt="Voice Chat" width={40} height={40} className="w-14 hidden dark:block" />
               </div>
 
-              <h3 className="text-2xl font-bold mb-4 text-center">Ask Questions</h3>
+              <h3 className="text-2xl font-bold mb-4 text-center">{dict.howItWorks.steps[0].title}</h3>
               <p className="text-muted-foreground text-center leading-relaxed mb-6">
-                Chat with our AI assistant about any dental concerns. Get instant answers about
-                symptoms, treatments, and oral health tips.
+                {dict.howItWorks.steps[0].desc}
               </p>
 
               {/* Feature Pills */}
               <div className="flex flex-wrap gap-2 justify-center">
                 <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">
-                  24/7 Available
+                  {dict.howItWorks.steps[0].pills[0]}
                 </span>
                 <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">
-                  Instant Response
+                  {dict.howItWorks.steps[0].pills[1]}
                 </span>
               </div>
             </div>
@@ -76,22 +79,22 @@ function HowItWorks() {
 
               {/* Icon */}
               <div className="w-20 h-20 bg-linear-to-br from-primary/10 to-primary/5 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 mb-6">
-                <Image src="/brain.png" alt="AI Brain" width={40} height={40} className="w-14" />
+                <Image src="/grbrain.png" alt="AI Brain" width={40} height={40} className="w-14 dark:hidden" />
+                <Image src="/brain.png" alt="AI Brain" width={40} height={40} className="w-14 hidden dark:block" />
               </div>
 
-              <h3 className="text-2xl font-bold mb-4 text-center">Get Expert Advice</h3>
+              <h3 className="text-2xl font-bold mb-4 text-center">{dict.howItWorks.steps[1].title}</h3>
               <p className="text-muted-foreground text-center leading-relaxed mb-6">
-                Receive personalized recommendations based on thousands of dental cases. Our AI
-                provides professional-grade insights.
+                {dict.howItWorks.steps[1].desc}
               </p>
 
               {/* Feature Pills */}
               <div className="flex flex-wrap gap-2 justify-center">
                 <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">
-                  AI-Powered
+                  {dict.howItWorks.steps[1].pills[0]}
                 </span>
                 <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">
-                  Personalized
+                  {dict.howItWorks.steps[1].pills[1]}
                 </span>
               </div>
             </div>
@@ -107,22 +110,22 @@ function HowItWorks() {
 
               {/* Icon */}
               <div className="w-20 h-20 bg-linear-to-br from-primary/10 to-primary/5 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 mb-6">
-                <Image src="/calendar.png" alt="Calendar" width={40} height={40} className="w-14" />
+                <Image src="/grcalendar.png" alt="Calendar" width={40} height={40} className="w-14 dark:hidden" />
+                <Image src="/calendar.png" alt="Calendar" width={40} height={40} className="w-14 hidden dark:block" />
               </div>
 
-              <h3 className="text-2xl font-bold mb-4 text-center">Book & Get Care</h3>
+              <h3 className="text-2xl font-bold mb-4 text-center">{dict.howItWorks.steps[2].title}</h3>
               <p className="text-muted-foreground text-center leading-relaxed mb-6">
-                Schedule with verified dentists and receive comprehensive follow-up care. Track your
-                progress seamlessly.
+                {dict.howItWorks.steps[2].desc}
               </p>
 
               {/* Feature Pills */}
               <div className="flex flex-wrap gap-2 justify-center">
                 <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">
-                  Verified Doctors
+                  {dict.howItWorks.steps[2].pills[0]}
                 </span>
                 <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">
-                  Follow-up Care
+                  {dict.howItWorks.steps[2].pills[1]}
                 </span>
               </div>
             </div>
@@ -135,7 +138,7 @@ function HowItWorks() {
         <SignUpButton mode="modal">
           <Button size="lg">
             <ArrowRightIcon className="mr-2 size-5" />
-            Get started now
+            {dict.howItWorks.bottomCta}
           </Button>
         </SignUpButton>
       </div>

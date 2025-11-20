@@ -140,6 +140,31 @@ const nextConfig: NextConfig = {
     then create "route.ts" in this name
 === in develop case i can only recieve email on gmail that i loggin with it in resend site
 
+--------------------------------------------------
+
+######### multi Theme
+
+=== npm install next-themes
+=== create "theme-provider.tsx" file in "providers" folder
+=== search on google "shadcn nextjs themes" then from docs copy code and paste in "theme-provider.tsx" file
+=== Wrap layout with <ThemeProvider>
+=== Create "ToogleSwitch" component
+=== import { useTheme } from "next-themes"
+    const { setTheme } = useTheme()
+    onClick={() => setTheme("light")
+
+--------------------------------------------------
+
+######### deploy
+
+=== because i use prisma, i should write in "package.json" file
+    "build": "prisma generate && next build --turbopack",
+
+=== 
+
+
+generate this image but in this color #00df02 and its gradients
+
 
 
 

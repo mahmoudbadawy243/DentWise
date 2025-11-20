@@ -1,7 +1,18 @@
+"use client"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { MicIcon, ShieldIcon, CalendarIcon } from "lucide-react";
+import { useParams } from "next/navigation";
+import en from "@/dictionaries/en.json";
+import ar from "@/dictionaries/ar.json";
 
 function FeatureCards() {
+
+  const { locale } = useParams();
+  const dict = (locale === 'ar' ? ar : en) as typeof en;
+  const voice = dict.voice || en.voice;
+  const how = voice.features.howToUse;
+  const feats = voice.features.features;
+  
   return (
     <div className="grid md:grid-cols-2 gap-8 mb-12">
       {/* how to use card */}
@@ -12,26 +23,26 @@ function FeatureCards() {
             <div className="w-10 h-10 bg-linear-to-br from-primary/20 to-primary/10 rounded-xl flex items-center justify-center">
               <MicIcon className="h-5 w-5 text-primary" />
             </div>
-            How to Use
+            {how.title}
           </CardTitle>
-          <CardDescription>Simple steps to get started with voice assistance</CardDescription>
+          <CardDescription>{how.desc}</CardDescription>
         </CardHeader>
         <CardContent className="relative space-y-4">
           <div className="flex items-start gap-3">
             <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
-            <span className="text-sm">Click the microphone button to start talking</span>
+            <span className="text-sm">{how.steps[0]}</span>
           </div>
           <div className="flex items-start gap-3">
             <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
-            <span className="text-sm">Ask questions about dental health and treatments</span>
+            <span className="text-sm">{how.steps[1]}</span>
           </div>
           <div className="flex items-start gap-3">
             <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
-            <span className="text-sm">Get instant voice responses from the AI</span>
+            <span className="text-sm">{how.steps[2]}</span>
           </div>
           <div className="flex items-start gap-3">
             <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
-            <span className="text-sm">View conversation transcript in real-time</span>
+            <span className="text-sm">{how.steps[3]}</span>
           </div>
         </CardContent>
       </Card>
@@ -44,28 +55,28 @@ function FeatureCards() {
             <div className="w-10 h-10 bg-linear-to-br from-primary/20 to-primary/10 rounded-xl flex items-center justify-center">
               <ShieldIcon className="h-5 w-5 text-primary" />
             </div>
-            Features
+            {feats.title}
           </CardTitle>
-          <CardDescription>Advanced capabilities for dental care</CardDescription>
+          <CardDescription>{feats.desc}</CardDescription>
         </CardHeader>
         <CardContent className="relative space-y-4">
           <div className="flex items-center p-3 bg-muted/30 rounded-xl">
             <div className="w-8 h-8 bg-linear-to-br from-primary/20 to-primary/10 rounded-lg flex items-center justify-center mr-3">
               <MicIcon className="h-4 w-4 text-primary" />
             </div>
-            <span className="font-medium text-sm">Real-time Voice Recognition</span>
+            <span className="font-medium text-sm">{feats.items.realtime}</span>
           </div>
           <div className="flex items-center p-3 bg-muted/30 rounded-xl">
             <div className="w-8 h-8 bg-linear-to-br from-primary/20 to-primary/10 rounded-lg flex items-center justify-center mr-3">
               <ShieldIcon className="h-4 w-4 text-primary" />
             </div>
-            <span className="font-medium text-sm">AI-Powered Responses</span>
+            <span className="font-medium text-sm">{feats.items.ai}</span>
           </div>
           <div className="flex items-center p-3 bg-muted/30 rounded-xl">
             <div className="w-8 h-8 bg-linear-to-br from-primary/20 to-primary/10 rounded-lg flex items-center justify-center mr-3">
               <CalendarIcon className="h-4 w-4 text-primary" />
             </div>
-            <span className="font-medium text-sm">Conversation History</span>
+            <span className="font-medium text-sm">{feats.items.history}</span>
           </div>
         </CardContent>
       </Card>

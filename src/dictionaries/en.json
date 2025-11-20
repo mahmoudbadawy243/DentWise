@@ -1,0 +1,398 @@
+{
+  "common": {
+    "appName": "DentWise",
+    "tagline": "AI Powered Dental Assistant"
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "pricing": "Pricing",
+    "about": "About",
+    "contact": "Contact",
+    "dashboard": "Dashboard",
+    "appointments": "Appointments",
+    "voice": "Voice",
+    "pro": "Pro",
+    "signin": "Sign in",
+    "signup": "Sign up",
+    "signout": "Sign out"
+  },
+  "header": {
+    "howItWorks": "How it works",
+    "pricing": "Pricing",
+    "whatToAsk": "What to ask",
+    "contact": "Contact",
+    "login": "Login",
+    "signUp": "Sign Up"
+  },
+  "hero": {
+    "badge": "AI-Powered Dental Assistant",
+    "title": "Your 24/7 AI dental assistant",
+    "h1Line1": "Your dental",
+    "h1Line2": "questions",
+    "h1Line3": "answered instantly",
+    "subtitle": "Chat with our AI dental assistant for instant advice, book smart appointments, and get personalized care recommendations. Available 24/7.",
+    "tryVoice": "Try voice agent",
+    "bookAppointment": "Book appointment",
+    "rating": "4.9/5",
+    "trustedBy": "Trusted by",
+    "patients": "patients"
+  },
+  "features": {
+    "title": "Why DentWise",
+    "items": [
+      { "title": "Instant answers", "desc": "Ask dental questions and get AI guidance in seconds." },
+      { "title": "Voice calls", "desc": "Talk to the assistant hands‑free, anywhere." },
+      { "title": "Smart scheduling", "desc": "Book, confirm, and remind patients automatically." }
+    ]
+  },
+  "pricing": {
+    "badge": "Simple Pricing",
+    "headingLine1": "Choose your",
+    "headingLine2": "AI dental plan",
+    "description": "Book appointments for free and upgrade for unlimited AI consultations. Perfect for ongoing dental care.",
+    "perMonth": "/month",
+    "free": {
+      "name": "Free",
+      "price": "$0",
+      "cta": "Get Started Free",
+      "features": [
+        "Unlimited appointment booking",
+        "Find dentists in your area",
+        "Basic text chat support",
+        "Appointment reminders"
+      ]
+    },
+    "basic": {
+      "badge": "Most Popular",
+      "name": "AI Basic",
+      "price": "$9",
+      "cta": "Start AI Basic",
+      "features": [
+        "Everything in Free",
+        "10 AI voice calls per month",
+        "AI dental guidance & advice",
+        "Symptom assessment",
+        "Priority support",
+        "Call history & recordings"
+      ]
+    },
+    "pro": {
+      "name": "AI Pro",
+      "price": "$19",
+      "cta": "Upgrade to AI Pro",
+      "features": [
+        "Everything in AI Basic",
+        "Unlimited AI voice calls",
+        "Advanced AI dental analysis",
+        "Personalized care plans",
+        "24/7 priority AI support",
+        "Detailed health reports"
+      ]
+    }
+  },
+  "cta": {
+    "badge": "Ready When You Are",
+    "headingLine1": "Your dental health",
+    "headingLine2": "journey starts here",
+    "description": "Join 1,200+ patients who trust our AI for instant guidance and personalized care.",
+    "startChat": "Start free chat",
+    "bookAppointment": "Book appointment",
+    "available247": "Available 24/7"
+  },
+  "whatToAsk": {
+    "badge": "AI-Powered Conversations",
+    "headingLine1": "Ask about",
+    "headingLine2": "anything dental",
+    "description": "From simple questions to complex concerns, our AI delivers expert-level guidance trained on thousands of real dental cases",
+    "commonQuestions": "Common questions our AI answers:",
+    "examples": [
+      {
+        "question": "My tooth hurts when I bite down",
+        "desc": "Get immediate advice on pain management, possible causes, and when to see a dentist urgently",
+        "pills": ["Instant Response", "Pain Relief"]
+      },
+      {
+        "question": "How much does teeth whitening cost?",
+        "desc": "Compare treatment options, pricing ranges, and find the best whitening solution for your budget",
+        "pills": ["Cost Analysis", "Treatment Options"]
+      },
+      {
+        "question": "When should I replace my filling?",
+        "desc": "Learn about filling lifespan, warning signs of wear, and replacement timing guidance",
+        "pills": ["Preventive Care", "Maintenance"]
+      }
+    ]
+  },
+  "footerDict": {
+    "product": "Product",
+    "support": "Support",
+    "legal": "Legal",
+    "howItWorks": "How it works",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "helpCenter": "Help center",
+    "contactUs": "Contact us",
+    "status": "Status",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "security": "Security",
+    "slogan": "AI-powered dental assistance that actually helps.",
+    "copyright": "Built for real people with real dental questions."
+  },
+  "howItWorks": {
+    "badge": "Simple Process",
+    "headingLine1": "Three steps to",
+    "headingLine2": "better dental health",
+    "description": "Our streamlined process makes dental care accessible, convenient, and stress-free for everyone",
+    "steps": [
+      {
+        "title": "Ask Questions",
+        "desc": "Chat with our AI assistant about any dental concerns. Get instant answers about symptoms, treatments, and oral health tips.",
+        "pills": ["24/7 Available", "Instant Response"]
+      },
+      {
+        "title": "Get Expert Advice",
+        "desc": "Receive personalized recommendations based on thousands of dental cases. Our AI provides professional-grade insights.",
+        "pills": ["AI-Powered", "Personalized"]
+      },
+      {
+        "title": "Book & Get Care",
+        "desc": "Schedule with verified dentists and receive comprehensive follow-up care. Track your progress seamlessly.",
+        "pills": ["Verified Doctors", "Follow-up Care"]
+      }
+    ],
+    "bottomCta": "Get started now"
+  }
+  ,
+  "appointments": {
+    "page": {
+      "title": "Book an Appointment",
+      "subtitle": "Find and book with verified dentists in your area"
+    },
+    "errors": {
+      "fillRequired": "Please fill in all required fields",
+      "bookFailed": "Failed to book appointment"
+    },
+    "selectDentist": {
+      "title": "Choose Your Dentist",
+      "generalSpeciality": "General Dentistry",
+      "appointmentsUnit": "appointments",
+      "locationName": "DentWise",
+      "defaultBio": "Experienced dental professional providing quality care.",
+      "badgeLicensed": "Licensed Professional",
+      "continue": "Continue to Time Selection"
+    },
+    "selectTime": {
+      "back": "Back",
+      "title": "Select Date & Time",
+      "appointmentType": "Appointment Type",
+      "availableDates": "Available Dates",
+      "availableTimes": "Available Times",
+      "booked": "(Booked)",
+      "reviewBooking": "Review Booking"
+    },
+    "confirm": {
+      "back": "Back",
+      "title": "Confirm Your Appointment",
+      "summaryTitle": "Appointment Summary",
+      "fields": {
+        "type": "Appointment Type",
+        "duration": "Duration",
+        "date": "Date",
+        "time": "Time",
+        "location": "Location",
+        "cost": "Cost"
+      },
+      "locationName": "Dental Center",
+      "modify": "Modify Appointment",
+      "confirm": "Confirm Booking",
+      "booking": "Booking..."
+    },
+    "progress": {
+      "steps": ["Select Dentist", "Choose Time", "Confirm"]
+    },
+    "confirmationModal": {
+      "title": "Appointment Confirmed!",
+      "description": "Your appointment has been successfully booked",
+      "detailsSent": "Details sent to your inbox",
+      "quickSummary": "Quick Summary",
+      "ok": "Okay",
+      "close": "Close",
+      "noteLine1": "Please arrive 15 minutes early for your appointment.",
+      "noteLine2": "Need to reschedule? Contact us 24 hours in advance."
+    }
+  }
+  ,
+  "admin": {
+    "badge": "Admin Dashboard",
+    "welcomeBack": "Welcome back",
+    "subtitle": "Manage doctors, oversee appointments, and monitor your dental practice performance.",
+    "stats": {
+      "totalDoctors": "Total Doctors",
+      "activeDoctors": "Active Doctors",
+      "totalAppointments": "Total Appointments",
+      "completedAppointments": "Completed Appointments"
+    },
+    "doctorsManagement": {
+      "title": "Doctors Management",
+      "description": "Manage and oversee all doctors in your practice",
+      "addDoctor": "Add Doctor",
+      "genderMale": "Male",
+      "genderFemale": "Female",
+      "appointments": "Appointments",
+      "active": "Active",
+      "inactive": "Inactive",
+      "edit": "Edit"
+    },
+    "recentAppointments": {
+      "title": "Recent Appointments",
+      "description": "Monitor and manage all patient appointments",
+      "table": {
+        "patient": "Patient",
+        "doctor": "Doctor",
+        "dateTime": "Date & Time",
+        "reason": "Reason",
+        "status": "Status"
+      },
+      "status": {
+        "confirmed": "Confirmed",
+        "completed": "Completed"
+      }
+    }
+    ,
+    "dialogs": {
+      "add": {
+        "title": "Add New Doctor",
+        "description": "Add a new doctor to your practice.",
+        "labels": {
+          "name": "Name *",
+          "speciality": "Speciality *",
+          "email": "Email *",
+          "phone": "Phone",
+          "gender": "Gender",
+          "status": "Status",
+          "selectGender": "Select gender",
+          "active": "Active",
+          "inactive": "Inactive"
+        },
+        "placeholders": {
+          "name": "Dr. John Smith",
+          "speciality": "General Dentistry",
+          "email": "doctor@example.com",
+          "phone": "(555) 123-4567"
+        },
+        "buttons": {
+          "cancel": "Cancel",
+          "submit": "Add Doctor",
+          "submitting": "Adding..."
+        }
+      },
+      "edit": {
+        "title": "Edit Doctor",
+        "description": "Update doctor information and status.",
+        "labels": {
+          "name": "Name",
+          "speciality": "Speciality",
+          "email": "Email",
+          "phone": "Phone",
+          "gender": "Gender",
+          "status": "Status",
+          "selectGender": "Select gender",
+          "active": "Active",
+          "inactive": "Inactive"
+        },
+        "placeholders": {
+          "phone": "(555) 123-4567"
+        },
+        "buttons": {
+          "cancel": "Cancel",
+          "save": "Save Changes",
+          "saving": "Saving..."
+        }
+      }
+    }
+  }
+  ,
+  "proPage": {
+    "badge": "Upgrade to Pro",
+    "title": "Unlock Premium AI Dental Care",
+    "subtitle": "Get unlimited AI consultations, advanced features, and priority support to take your dental health to the next level.",
+    "plans": {
+      "title": "Choose Your Plan",
+      "description": "Select the perfect plan for your dental care needs. All plans include secure access and bank-level encryption."
+    }
+  }
+  ,
+  "voice": {
+    "welcome": {
+      "badge": "Voice Assistant Ready",
+      "title": "AI Voice Assistant",
+      "subtitle": "Talk to your AI dental assistant using natural voice commands. Get instant advice and professional guidance."
+    },
+    "features": {
+      "howToUse": {
+        "title": "How to Use",
+        "desc": "Simple steps to get started with voice assistance",
+        "steps": [
+          "Click the microphone button to start talking",
+          "Ask questions about dental health and treatments",
+          "Get instant voice responses from the AI",
+          "View conversation transcript in real-time"
+        ]
+      },
+      "features": {
+        "title": "Features",
+        "desc": "Advanced capabilities for dental care",
+        "items": {
+          "realtime": "Real-time Voice Recognition",
+          "ai": "AI-Powered Responses",
+          "history": "Conversation History"
+        }
+      }
+    },
+    "pro": {
+      "badge": "Pro Feature",
+      "title": "Voice Assistant Access Required",
+      "subtitle": "Upgrade to AI Pro or AI Basic to unlock unlimited voice consultations with our AI dental assistant.",
+      "upgradeTitle": "Upgrade Required",
+      "upgradeDesc": "The voice assistant feature is available to AI Pro and AI Basic subscribers. Get instant dental advice through natural voice conversations.",
+      "bullets": [
+        "24/7 voice consultations",
+        "Professional dental guidance",
+        "Instant pain relief advice"
+      ],
+      "upgradeButton": "Upgrade to Pro"
+    },
+    "widget": {
+      "header": {
+        "title1": "Talk to Your",
+        "title2": "AI Dental Assistant",
+        "subtitle": "Have a voice conversation with our AI assistant for dental advice and guidance"
+      },
+      "ai": {
+        "name": "DentWise AI",
+        "role": "Dental Assistant",
+        "state": {
+          "speaking": "Speaking...",
+          "listening": "Listening...",
+          "ended": "Call ended",
+          "waiting": "Waiting..."
+        }
+      },
+      "user": {
+        "you": "You",
+        "guest": "Guest",
+        "ready": "Ready"
+      },
+      "system": "System:",
+      "endedMessage": "Call ended. Thank you for using DentWise AI!",
+      "button": {
+        "endCall": "End Call",
+        "connecting": "Connecting...",
+        "callEnded": "Call Ended",
+        "startCall": "Start Call"
+      }
+    }
+  }
+}

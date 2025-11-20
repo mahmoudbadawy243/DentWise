@@ -10,6 +10,9 @@ import { MapPinIcon, PhoneIcon, StarIcon } from "lucide-react";
 import { CardHeader } from '@/components/ui/card';
 import { CardDescription } from '@/components/ui/card';
 import Image from "next/image";
+import { useParams } from "next/navigation";
+import en from "@/dictionaries/en.json";
+import ar from "@/dictionaries/ar.json";
 
 interface DoctorSelectionStepProps {
   selectedDentistId: string | null;
@@ -20,18 +23,20 @@ interface DoctorSelectionStepProps {
 function SelectDentist({ selectedDentistId, onSelectDentist, onContinue }: DoctorSelectionStepProps) {
   
   const { data: dentists = [] , isLoading } = useAvailableDoctors()
+  const { locale } = useParams();
+  const dict = (locale === 'ar' ? ar : en) as typeof en;
 
   if (isLoading)
     return (
       <div className="space-y-6">
-        <h2 className="text-2xl font-semibold">Choose Your Dentist</h2>
+        <h2 className="text-2xl font-semibold">{dict.appointments.selectDentist.title}</h2>
         <DoctorCardsLoading />
       </div>
     );
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-semibold">Choose Your Dentist</h2>
+      <h2 className="text-2xl font-semibold">{dict.appointments.selectDentist.title}</h2>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {dentists.map((dentist) => (
@@ -54,7 +59,7 @@ function SelectDentist({ selectedDentistId, onSelectDentist, onContinue }: Docto
                 <div className="flex-1">
                   <CardTitle className="text-lg">{dentist.name}</CardTitle>
                   <CardDescription className="text-primary font-medium">
-                    {dentist.speciality || "General Dentistry"}
+                    {dentist.speciality || dict.appointments.selectDentist.generalSpeciality}
                   </CardDescription>
                   <div className="flex items-center gap-2 mt-2">
                     <div className="flex items-center gap-1">
@@ -62,7 +67,7 @@ function SelectDentist({ selectedDentistId, onSelectDentist, onContinue }: Docto
                       <span className="text-sm font-medium">5</span>
                     </div>
                     <span className="text-sm text-muted-foreground">
-                      ({dentist.appointmentCount} appointments)
+                      ({dentist.appointmentCount} {dict.appointments.selectDentist.appointmentsUnit})
                     </span>
                   </div>
                 </div>
@@ -72,16 +77,16 @@ function SelectDentist({ selectedDentistId, onSelectDentist, onContinue }: Docto
             <CardContent className="space-y-3">
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <MapPinIcon className="w-4 h-4" />
-                <span>DentWise</span>
+                <span>{dict.appointments.selectDentist.locationName}</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <PhoneIcon className="w-4 h-4" />
                 <span>{dentist.phone}</span>
               </div>
               <p className="text-sm text-muted-foreground">
-                {dentist.bio || "Experienced dental professional providing quality care."}
+                {dentist.bio || dict.appointments.selectDentist.defaultBio}
               </p>
-              <Badge variant="secondary">Licensed Professional</Badge>
+              <Badge variant="secondary">{dict.appointments.selectDentist.badgeLicensed}</Badge>
             </CardContent>
           </Card>
         ))}
@@ -89,7 +94,7 @@ function SelectDentist({ selectedDentistId, onSelectDentist, onContinue }: Docto
 
       {selectedDentistId && (
         <div className="flex justify-end">
-          <Button onClick={onContinue}>Continue to Time Selection</Button>
+          <Button onClick={onContinue}>{dict.appointments.selectDentist.continue}</Button>
         </div>
       )}
     </div>

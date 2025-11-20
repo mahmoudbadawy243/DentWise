@@ -3,6 +3,9 @@ import { Button } from "@/components/ui/button";
 import { CheckCircleIcon, MailIcon, CalendarIcon, ClockIcon, UserIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useParams } from "next/navigation";
+import en from "@/dictionaries/en.json";
+import ar from "@/dictionaries/ar.json";
 
 interface AppointmentConfirmationModalProps {
   open: boolean;
@@ -18,6 +21,10 @@ interface AppointmentConfirmationModalProps {
 export function AppointmentConfirmationModal({
   open, onOpenChange, appointmentDetails }: AppointmentConfirmationModalProps) {
   
+    const { locale } = useParams();
+    const dict = (locale === 'ar' ? ar : en) as typeof en;
+    const t = dict.appointments.confirmationModal;
+
     return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md mt-10">
@@ -27,11 +34,11 @@ export function AppointmentConfirmationModal({
           </div>
 
           <DialogTitle className="text-xl font-semibold text-center">
-            Appointment Confirmed!
+            {t.title}
           </DialogTitle>
 
           <DialogDescription className="text-center text-muted-foreground">
-            Your appointment has been successfully booked
+            {t.description}
           </DialogDescription>
         </DialogHeader>
 
@@ -48,7 +55,7 @@ export function AppointmentConfirmationModal({
             <div className="text-center space-y-1">
               <div className="flex items-center justify-center gap-2 text-sm font-medium text-primary">
                 <MailIcon className="h-4 w-4" />
-                Details sent to your inbox
+                {t.detailsSent}
               </div>
               {appointmentDetails?.userEmail && (
                 <p className="text-xs text-muted-foreground">{appointmentDetails.userEmail}</p>
@@ -59,7 +66,7 @@ export function AppointmentConfirmationModal({
           {/* Appointment Summary */}
           {appointmentDetails && (
             <div className="bg-muted/30 rounded-lg p-4 space-y-3">
-              <h4 className="font-medium text-sm text-center mb-3">Quick Summary</h4>
+              <h4 className="font-medium text-sm text-center mb-3">{t.quickSummary}</h4>
 
               <div className="space-y-2">
                 <div className="flex items-center gap-3 text-sm">
@@ -84,21 +91,21 @@ export function AppointmentConfirmationModal({
           <div className="flex flex-col gap-3">
             <Link href="/appointments" className="w-full">
               <Button className="w-full" onClick={() => onOpenChange(false)}>
-                Okay
+                {t.ok}
               </Button>
             </Link>
 
             <Button variant="outline" className="w-full" onClick={() => onOpenChange(false)}>
-              Close
+              {t.close}
             </Button>
           </div>
 
           {/* Additional Info */}
           <div className="text-center text-xs text-muted-foreground border-t pt-4">
             <p>
-              Please arrive 15 minutes early for your appointment.
+              {t.noteLine1}
               <br />
-              Need to reschedule? Contact us 24 hours in advance.
+              {t.noteLine2}
             </p>
           </div>
         </div>

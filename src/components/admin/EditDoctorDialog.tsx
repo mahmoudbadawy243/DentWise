@@ -7,6 +7,9 @@ import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { Button } from "../ui/button";
+import { useParams } from "next/navigation";
+import en from "@/dictionaries/en.json";
+import ar from "@/dictionaries/ar.json";
 
 interface EditDoctorDialogProps {
   isOpen: boolean;
@@ -18,6 +21,8 @@ function EditDoctorDialog({ doctor, isOpen, onClose }: EditDoctorDialogProps) {
   const [editingDoctor, setEditingDoctor] = useState<Doctor | null>(doctor);
 
   const updateDoctorMutation = useUpdateDoctor();
+  const { locale } = useParams();
+  const dict = (locale === 'ar' ? ar : en) as typeof en;
 
   const handlePhoneChange = (value: string) => {
     const formattedPhoneNumber = formatPhoneNumber(value);
@@ -41,15 +46,15 @@ function EditDoctorDialog({ doctor, isOpen, onClose }: EditDoctorDialogProps) {
     <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>
-          <DialogTitle>Edit Doctor</DialogTitle>
-          <DialogDescription>Update doctor information and status.</DialogDescription>
+          <DialogTitle>{dict.admin.dialogs.edit.title}</DialogTitle>
+          <DialogDescription>{dict.admin.dialogs.edit.description}</DialogDescription>
         </DialogHeader>
 
         {editingDoctor && (
           <div className="grid gap-4 py-4">
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="name">Name</Label>
+                <Label htmlFor="name">{dict.admin.dialogs.edit.labels.name}</Label>
                 <Input
                   id="name"
                   value={editingDoctor.name}
@@ -57,7 +62,7 @@ function EditDoctorDialog({ doctor, isOpen, onClose }: EditDoctorDialogProps) {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="speciality">Speciality</Label>
+                <Label htmlFor="speciality">{dict.admin.dialogs.edit.labels.speciality}</Label>
                 <Input
                   id="speciality"
                   value={editingDoctor.speciality}
@@ -69,7 +74,7 @@ function EditDoctorDialog({ doctor, isOpen, onClose }: EditDoctorDialogProps) {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">{dict.admin.dialogs.edit.labels.email}</Label>
               <Input
                 id="email"
                 type="email"
@@ -79,18 +84,18 @@ function EditDoctorDialog({ doctor, isOpen, onClose }: EditDoctorDialogProps) {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="phone">Phone</Label>
+              <Label htmlFor="phone">{dict.admin.dialogs.edit.labels.phone}</Label>
               <Input
                 id="phone"
                 value={editingDoctor.phone}
                 onChange={(e) => handlePhoneChange(e.target.value)}
-                placeholder="(555) 123-4567"
+                placeholder={dict.admin.dialogs.edit.placeholders.phone}
               />
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="gender">Gender</Label>
+                <Label htmlFor="gender">{dict.admin.dialogs.edit.labels.gender}</Label>
                 <Select
                   value={editingDoctor.gender || ""}
                   onValueChange={(value) =>
@@ -98,16 +103,16 @@ function EditDoctorDialog({ doctor, isOpen, onClose }: EditDoctorDialogProps) {
                   }
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder="Select gender" />
+                    <SelectValue placeholder={dict.admin.dialogs.edit.labels.selectGender} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="MALE">Male</SelectItem>
-                    <SelectItem value="FEMALE">Female</SelectItem>
+                    <SelectItem value="MALE">{dict.admin.doctorsManagement.genderMale}</SelectItem>
+                    <SelectItem value="FEMALE">{dict.admin.doctorsManagement.genderFemale}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
               <div className="space-y-2">
-                <Label htmlFor="status">Status</Label>
+                <Label htmlFor="status">{dict.admin.dialogs.edit.labels.status}</Label>
                 <Select
                   value={editingDoctor.isActive ? "active" : "inactive"}
                   onValueChange={(value) =>
@@ -118,8 +123,8 @@ function EditDoctorDialog({ doctor, isOpen, onClose }: EditDoctorDialogProps) {
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="active">Active</SelectItem>
-                    <SelectItem value="inactive">Inactive</SelectItem>
+                    <SelectItem value="active">{dict.admin.dialogs.edit.labels.active}</SelectItem>
+                    <SelectItem value="inactive">{dict.admin.dialogs.edit.labels.inactive}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -129,14 +134,14 @@ function EditDoctorDialog({ doctor, isOpen, onClose }: EditDoctorDialogProps) {
 
         <DialogFooter>
           <Button variant="outline" onClick={handleClose}>
-            Cancel
+            {dict.admin.dialogs.edit.buttons.cancel}
           </Button>
           <Button
             onClick={handleSave}
             className="bg-primary hover:bg-primary/90"
             disabled={updateDoctorMutation.isPending}
           >
-            {updateDoctorMutation.isPending ? "Saving..." : "Save Changes"}
+            {updateDoctorMutation.isPending ? dict.admin.dialogs.edit.buttons.saving : dict.admin.dialogs.edit.buttons.save}
           </Button>
         </DialogFooter>
       </DialogContent>

@@ -6,6 +6,9 @@ import { useEffect, useRef, useState } from "react";
 import { Card } from "../ui/card";
 import Image from "next/image";
 import { Button } from "../ui/button";
+import { useParams } from "next/navigation";
+import en from "@/dictionaries/en.json";
+import ar from "@/dictionaries/ar.json";
 
 interface VapiMessage {
     type: string;
@@ -24,6 +27,9 @@ interface VapiMessage {
   const [callEnded, setCallEnded] = useState(false);
 
   const { user, isLoaded } = useUser();
+  const { locale } = useParams();
+  const dictBase = (locale === 'ar' ? ar : en) as typeof en;
+  const voice = (dictBase as typeof en).voice || en.voice;
 
   // auto-scroll for messages
   const messageContainerRef = useRef<HTMLDivElement>(null);
@@ -120,11 +126,11 @@ useEffect(() => {
       {/* TITLE */}
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold font-mono">
-          <span>Talk to Your </span>
-          <span className="text-primary uppercase">AI Dental Assistant</span>
+          <span>{voice.widget.header.title1} </span>
+          <span className="text-primary uppercase">{voice.widget.header.title2}</span>
         </h1>
         <p className="text-muted-foreground mt-2">
-          Have a voice conversation with our AI assistant for dental advice and guidance
+          {voice.widget.header.subtitle}
         </p>
       </div>
 
@@ -178,8 +184,8 @@ useEffect(() => {
               </div>
             </div>
 
-            <h2 className="text-xl font-bold text-foreground">DentWise AI</h2>
-            <p className="text-sm text-muted-foreground mt-1">Dental Assistant</p>
+            <h2 className="text-xl font-bold text-foreground">{voice.widget.ai.name}</h2>
+            <p className="text-sm text-muted-foreground mt-1">{voice.widget.ai.role}</p>
 
             {/* SPEAKING INDICATOR */}
             <div
@@ -195,12 +201,12 @@ useEffect(() => {
 
               <span className="text-xs text-muted-foreground">
                 {isSpeaking
-                  ? "Speaking..."
+                  ? voice.widget.ai.state.speaking
                   : callActive
-                  ? "Listening..."
+                  ? voice.widget.ai.state.listening
                   : callEnded
-                  ? "Call ended"
-                  : "Waiting..."}
+                  ? voice.widget.ai.state.ended
+                  : voice.widget.ai.state.waiting}
               </span>
             </div>
           </div>
@@ -220,15 +226,15 @@ useEffect(() => {
               />
             </div>
 
-            <h2 className="text-xl font-bold text-foreground">You</h2>
+            <h2 className="text-xl font-bold text-foreground">{voice.widget.user.you}</h2>
             <p className="text-sm text-muted-foreground mt-1">
-              {user ? (user.firstName + " " + (user.lastName || "")).trim() : "Guest"}
+              {user ? (user.firstName + " " + (user.lastName || "")).trim() : voice.widget.user.guest}
             </p>
 
             {/* User Ready Text */}
             <div className={`mt-4 flex items-center gap-2 px-3 py-1 rounded-full bg-card border`}>
               <div className={`w-2 h-2 rounded-full bg-muted`} />
-              <span className="text-xs text-muted-foreground">Ready</span>
+              <span className="text-xs text-muted-foreground">{voice.widget.user.ready}</span>
             </div>
           </div>
         </Card>
@@ -244,7 +250,7 @@ useEffect(() => {
             {messages.map((msg, index) => (
               <div key={index} className="message-item animate-in fade-in duration-300">
                 <div className="font-semibold text-xs text-muted-foreground mb-1">
-                  {msg.role === "assistant" ? "DentWise AI" : "You"}:
+                  {msg.role === "assistant" ? voice.widget.ai.name : voice.widget.user.you}:
                 </div>
                 <p className="text-foreground">{msg.content}</p>
               </div>
@@ -252,8 +258,8 @@ useEffect(() => {
 
             {callEnded && (
               <div className="message-item animate-in fade-in duration-300">
-                <div className="font-semibold text-xs text-primary mb-1">System:</div>
-                <p className="text-foreground">Call ended. Thank you for using DentWise AI!</p>
+                <div className="font-semibold text-xs text-primary mb-1">{voice.widget.system}</div>
+                <p className="text-foreground">{voice.widget.endedMessage}</p>
               </div>
             )}
           </div>
@@ -279,12 +285,12 @@ useEffect(() => {
 
           <span>
             {callActive
-              ? "End Call"
+              ? voice.widget.button.endCall
               : connecting
-              ? "Connecting..."
+              ? voice.widget.button.connecting
               : callEnded
-              ? "Call Ended"
-              : "Start Call"}
+              ? voice.widget.button.callEnded
+              : voice.widget.button.startCall}
           </span>
         </Button>
       </div>

@@ -2,8 +2,12 @@ import { SignUpButton } from "@clerk/nextjs";
 import { Button } from "../ui/button";
 import { CalendarIcon, MicIcon, StarIcon } from "lucide-react";
 import Image from "next/image";
+import getTrans from "@/lib/translation";
+import { getCurrentLocale } from "@/lib/getCurrentLocale";
 
-function Hero() {
+async function Hero() {
+  const locale = await getCurrentLocale();
+  const dict = await getTrans(locale);
   return (
     <section className="relative flex items-center overflow-hidden pt-28 md:pt-26 ">
       {/* GRID BG  */}
@@ -16,38 +20,38 @@ function Hero() {
       <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-linear-to-r from-primary/15 to-primary/5 rounded-full blur-3xl" />
 
       <div className="relative z-10 w-full px-6">
-        <div className="max-w-7xl mx-auto text-center md:text-left">
+        <div className={`max-w-7xl mx-auto text-center ${locale === 'ar' ? 'md:text-right' : 'md:text-left'}`}>
           <div className="grid lg:grid-cols-2 gap-18 items-center pb-10">
             {/* LEFT CONTENT */}
-            <div className="space-y-6 mt-[-10px]">
-              <div className="space-y-6">
+            {/* <div className="space-y-9 mt-[-10px]"> */}
+            <div className={` mt-[-10px] ${locale === 'ar' ? 'space-y-6 mt-[-100px]' : 'space-y-6 mt-[-10px]'}`}>
+              <div className={` ${locale === 'ar' ? 'space-y-7' : 'space-y-6'}`}>
                 {/* BADGE */}
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-linear-to-r from-primary/10 to-primary/5 rounded-full border border-primary/20 backdrop-blur-sm">
                   <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
                   <span className="text-sm font-medium text-primary">
-                    AI-Powered Dental Assistant
+                    {dict.hero.badge}
                   </span>
                 </div>
 
                 {/* MAIN HEADING */}
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
                   <span className="bg-linear-to-br from-foreground via-foreground to-foreground/70 bg-clip-text text-transparent">
-                    Your dental
+                    {dict.hero.h1Line1}
                   </span>
                   <br />
                   <span className="bg-linear-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-                    questions
+                    {dict.hero.h1Line2}
                   </span>
                   <br />
                   <span className="bg-linear-to-br from-foreground via-foreground to-foreground/70 bg-clip-text text-transparent">
-                    answered instantly
+                    {dict.hero.h1Line3}
                   </span>
                 </h1>
 
                 {/* SUBTITLE */}
                 <p className="text-2xs md:text-lg text-muted-foreground leading-relaxed max-w-[420px] md:max-w-xl font-medium">
-                  Chat with our AI dental assistant for instant advice, book smart appointments, and
-                  get personalized care recommendations. Available 24/7.
+                  {dict.hero.subtitle}
                 </p>
               </div>
 
@@ -56,14 +60,14 @@ function Hero() {
                 <SignUpButton mode="modal">
                   <Button size={"lg"}>
                     <MicIcon className="mr-2 size-5" />
-                    Try voice agent
+                    {dict.hero.tryVoice}
                   </Button>
                 </SignUpButton>
 
                 <SignUpButton mode="modal">
                   <Button size={"lg"} variant={"outline"}>
                     <CalendarIcon className="mr-2 size-5" />
-                    Book appointment
+                    {dict.hero.bookAppointment}
                   </Button>
                 </SignUpButton>
               </div>
@@ -118,11 +122,11 @@ function Hero() {
                           <StarIcon key={star} className="h-4 w-4 fill-amber-400 text-amber-400" />
                         ))}
                       </div>
-                      <span className="text-sm font-bold text-foreground">4.9/5</span>
+                      <span className="text-sm font-bold text-foreground">{dict.hero.rating}</span>
                     </div>
                     <p className="text-sm text-muted-foreground">
-                      Trusted by{" "}
-                      <span className="font-semibold text-foreground">1,200+ patients</span>
+                      {dict.hero.trustedBy}{" "}
+                      <span className="font-semibold text-foreground">1,200+ {dict.hero.patients}</span>
                     </p>
                   </div>
                 </div>
@@ -141,7 +145,14 @@ function Hero() {
                 alt="DentWise AI"
                 width={550}
                 height={550}
-                className="md:mt-[-110] mt-[-100]"
+                className="md:mt-[-110] mt-[-100] hidden dark:block"
+              />
+              <Image
+                src={"/grrhero.png"}
+                alt="DentWise AI"
+                width={550}
+                height={550}
+                className="md:mt-[-110] mt-[-100] dark:hidden"
               />
             </div>
           </div>

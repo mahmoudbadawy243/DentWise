@@ -13,7 +13,8 @@ export default function MainActions() {
         <CardContent className="relative p-8">
           <div className="flex items-center gap-4 mb-6">
             <div className="w-16 h-16 bg-linear-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-              <Image src="/audio.png" alt="Voice AI" width={32} height={32} className="w-10" />
+              <Image src="/graudio.png" alt="Voice AI" width={32} height={32} className="w-10 dark:hidden" />
+              <Image src="/audio.png" alt="Voice AI" width={32} height={32} className="w-10 hidden dark:block" />
             </div>
             <div>
               <h3 className="text-2xl font-bold mb-2">AI Voice Assistant</h3>

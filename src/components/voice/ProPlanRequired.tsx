@@ -1,10 +1,21 @@
+"use client"
+
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { CrownIcon, LockIcon, MicIcon } from "lucide-react";
 import Link from "next/link";
+import { useParams } from "next/navigation";
+import en from "@/dictionaries/en.json";
+import ar from "@/dictionaries/ar.json";
 
 function ProPlanRequired() {
+
+  const { locale } = useParams();
+  const dictBase = (locale === 'ar' ? ar : en) as typeof en;
+  const voice = (dictBase as typeof en).voice || en.voice;
+  const t = voice.pro;
+  
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -18,13 +29,12 @@ function ProPlanRequired() {
               <div className="space-y-4">
                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-full border border-primary/20">
                   <LockIcon className="w-4 h-4 text-primary" />
-                  <span className="text-sm font-medium text-primary">Pro Feature</span>
+                  <span className="text-sm font-medium text-primary">{t.badge}</span>
                 </div>
                 <div>
-                  <h1 className="text-4xl font-bold mb-2">Voice Assistant Access Required</h1>
+                  <h1 className="text-4xl font-bold mb-2">{t.title}</h1>
                   <p className="text-muted-foreground">
-                    Upgrade to AI Pro or AI Basic to unlock unlimited voice consultations with our
-                    AI dental assistant.
+                    {t.subtitle}
                   </p>
                 </div>
               </div>
@@ -45,31 +55,24 @@ function ProPlanRequired() {
               <LockIcon className="w-10 h-10 text-primary" />
             </div>
 
-            <h3 className="text-2xl font-bold mb-4">Upgrade Required</h3>
+            <h3 className="text-2xl font-bold mb-4">{t.upgradeTitle}</h3>
             <p className="text-muted-foreground mb-6">
-              The voice assistant feature is available to AI Pro and AI Basic subscribers. Get
-              instant dental advice through natural voice conversations.
+              {t.upgradeDesc}
             </p>
 
             <div className="space-y-4 mb-6">
-              <div className="flex items-center gap-3 justify-center">
-                <div className="w-2 h-2 bg-primary rounded-full"></div>
-                <span className="text-sm">24/7 voice consultations</span>
-              </div>
-              <div className="flex items-center gap-3 justify-center">
-                <div className="w-2 h-2 bg-primary rounded-full"></div>
-                <span className="text-sm">Professional dental guidance</span>
-              </div>
-              <div className="flex items-center gap-3 justify-center">
-                <div className="w-2 h-2 bg-primary rounded-full"></div>
-                <span className="text-sm">Instant pain relief advice</span>
-              </div>
+              {t.bullets.map((b, i) => (
+                <div key={i} className="flex items-center gap-3 justify-center">
+                  <div className="w-2 h-2 bg-primary rounded-full"></div>
+                  <span className="text-sm">{b}</span>
+                </div>
+              ))}
             </div>
 
             <Link href="/pro">
               <Button className="w-full bg-linear-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
                 <CrownIcon className="mr-2 h-5 w-5" />
-                Upgrade to Pro
+                {t.upgradeButton}
               </Button>
             </Link>
           </CardContent>

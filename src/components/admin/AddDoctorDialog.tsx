@@ -7,6 +7,9 @@ import { Input } from "../ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { Button } from "../ui/button";
 import { formatPhoneNumber } from "@/lib/utils";
+import { useParams } from "next/navigation";
+import en from "@/dictionaries/en.json";
+import ar from "@/dictionaries/ar.json";
 
 interface AddDoctorDialogProps {
   isOpen: boolean;
@@ -25,6 +28,8 @@ function AddDoctorDialog({ isOpen, onClose }: AddDoctorDialogProps) {
   });
 
   const createDoctorMutation = useCreateDoctor();
+  const { locale } = useParams();
+  const dict = (locale === 'ar' ? ar : en) as typeof en;
 
   const handlePhoneChange = (value: string) => {
     const formattedPhoneNumber = formatPhoneNumber(value);
@@ -51,71 +56,71 @@ function AddDoctorDialog({ isOpen, onClose }: AddDoctorDialogProps) {
     <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>
-          <DialogTitle>Add New Doctor</DialogTitle>
-          <DialogDescription>Add a new doctor to your practice.</DialogDescription>
+          <DialogTitle>{dict.admin.dialogs.add.title}</DialogTitle>
+          <DialogDescription>{dict.admin.dialogs.add.description}</DialogDescription>
         </DialogHeader>
 
         <div className="grid gap-4 py-4">
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="new-name">Name *</Label>
+              <Label htmlFor="new-name">{dict.admin.dialogs.add.labels.name}</Label>
               <Input
                 id="new-name"
                 value={newDoctor.name}
                 onChange={(e) => setNewDoctor({ ...newDoctor, name: e.target.value })}
-                placeholder="Dr. John Smith"
+                placeholder={dict.admin.dialogs.add.placeholders.name}
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="new-speciality">Speciality *</Label>
+              <Label htmlFor="new-speciality">{dict.admin.dialogs.add.labels.speciality}</Label>
               <Input
                 id="new-speciality"
                 value={newDoctor.speciality}
                 onChange={(e) => setNewDoctor({ ...newDoctor, speciality: e.target.value })}
-                placeholder="General Dentistry"
+                placeholder={dict.admin.dialogs.add.placeholders.speciality}
               />
             </div>
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="new-email">Email *</Label>
+            <Label htmlFor="new-email">{dict.admin.dialogs.add.labels.email}</Label>
             <Input
               id="new-email"
               type="email"
               value={newDoctor.email}
               onChange={(e) => setNewDoctor({ ...newDoctor, email: e.target.value })}
-              placeholder="doctor@example.com"
+              placeholder={dict.admin.dialogs.add.placeholders.email}
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="new-phone">Phone</Label>
+            <Label htmlFor="new-phone">{dict.admin.dialogs.add.labels.phone}</Label>
             <Input
               id="new-phone"
               value={newDoctor.phone}
               onChange={(e) => handlePhoneChange(e.target.value)}
-              placeholder="(555) 123-4567"
+              placeholder={dict.admin.dialogs.add.placeholders.phone}
             />
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="new-gender">Gender</Label>
+              <Label htmlFor="new-gender">{dict.admin.dialogs.add.labels.gender}</Label>
               <Select
                 value={newDoctor.gender || ""}
                 onValueChange={(value) => setNewDoctor({ ...newDoctor, gender: value as Gender })}
               >
                 <SelectTrigger>
-                  <SelectValue placeholder="Select gender" />
+                  <SelectValue placeholder={dict.admin.dialogs.add.labels.selectGender} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="MALE">Male</SelectItem>
-                  <SelectItem value="FEMALE">Female</SelectItem>
+                  <SelectItem value="MALE">{dict.admin.doctorsManagement.genderMale}</SelectItem>
+                  <SelectItem value="FEMALE">{dict.admin.doctorsManagement.genderFemale}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="new-status">Status</Label>
+              <Label htmlFor="new-status">{dict.admin.dialogs.add.labels.status}</Label>
               <Select
                 value={newDoctor.isActive ? "active" : "inactive"}
                 onValueChange={(value) =>
@@ -126,8 +131,8 @@ function AddDoctorDialog({ isOpen, onClose }: AddDoctorDialogProps) {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="active">Active</SelectItem>
-                  <SelectItem value="inactive">Inactive</SelectItem>
+                  <SelectItem value="active">{dict.admin.dialogs.add.labels.active}</SelectItem>
+                  <SelectItem value="inactive">{dict.admin.dialogs.add.labels.inactive}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -136,7 +141,7 @@ function AddDoctorDialog({ isOpen, onClose }: AddDoctorDialogProps) {
 
         <DialogFooter>
           <Button variant="outline" onClick={handleClose}>
-            Cancel
+            {dict.admin.dialogs.add.buttons.cancel}
           </Button>
 
           <Button
@@ -149,7 +154,7 @@ function AddDoctorDialog({ isOpen, onClose }: AddDoctorDialogProps) {
               createDoctorMutation.isPending
             }
           >
-            {createDoctorMutation.isPending ? "Adding..." : "Add Doctor"}
+            {createDoctorMutation.isPending ? dict.admin.dialogs.add.buttons.submitting : dict.admin.dialogs.add.buttons.submit}
           </Button>
         </DialogFooter>
       </DialogContent>

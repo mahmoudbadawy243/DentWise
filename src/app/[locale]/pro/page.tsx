@@ -1,16 +1,18 @@
 import Navbar from "@/components/Navbar";
-import { PricingTable } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
 import { CrownIcon } from "lucide-react";
 import { redirect } from "next/navigation";
-// import { neobrutalism } from '@clerk/themes'
+import getTrans from "@/lib/translation";
+import { Locale } from "@/i18n.config";
+import en from "@/dictionaries/en.json";
+import PricingTableTheme from "./PricingTableTheme";
 
-
-
-async function ProPage() {
+async function ProPage({ params }: { params: Promise<{ locale: Locale }> }) {
 
   const user = await currentUser();
   if (!user) redirect("/");
+  const { locale } = await params;
+  const dict = (await getTrans(locale)) as typeof en;
 
   return (
     <>
@@ -22,14 +24,13 @@ async function ProPage() {
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-primar/10 rounded-full border border-primary/20 ">
                 <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                <span className="text-sm font-medium text-primary">Upgrade to Pro</span>
+                <span className="text-sm font-medium text-primary">{dict.proPage?.badge}</span>
               </div>
 
               <div>
-                <h1 className="text-4xl font-bold mb-2">Unlock Premium AI Dental Care</h1>
+                <h1 className="text-4xl font-bold mb-2">{dict.proPage?.title}</h1>
                 <p className="text-muted-foreground max-w-4xl">
-                  Get unlimited AI consultations, advanced features, and priority support to take
-                  your dental health to the next level.
+                  {dict.proPage?.subtitle}
                 </p>
               </div>
             </div>
@@ -45,16 +46,13 @@ async function ProPage() {
         {/* PRICING SECTION */}
         <div className="space-y-8 pb-20">
           <div className="text-center space-y-4 pb-10">
-            <h2 className="text-3xl font-bold">Choose Your Plan</h2>
+            <h2 className="text-3xl font-bold">{dict.proPage?.plans.title}</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Select the perfect plan for your dental care needs. All plans include secure access
-              and bank-level encryption.
+              {dict.proPage?.plans.description}
             </p>
           </div>
 
-          {/* this is RESERVED name that is imported from clerk depend on plans that i created on clerk site */}
-          <PricingTable 
-          appearance={{ variables: { colorPrimary: "oklch(0.6716 0.1368 48.5130)",} }} />
+        <PricingTableTheme />
 
         </div>
       </div>

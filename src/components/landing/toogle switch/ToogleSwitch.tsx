@@ -11,8 +11,8 @@ const ToogleSwitch = () => {
   };
 
   return (
-    <div className="checkbox-wrapper-5 flex border mt-1 p-2 rounded-full">
-        <p className="pr-2">Light</p>
+    <div className="checkbox-wrapper-5 flex border mt-1 p-2 rounded-xl">
+        <p className="px-2">Light</p>
       <div className="check">
         <input 
           id="check-5" 
@@ -22,7 +22,7 @@ const ToogleSwitch = () => {
         />
         <label htmlFor="check-5" />
       </div>
-        <p className="pl-2">Dark</p>
+        <p className="px-2">Dark</p>
     </div>
   );
 }

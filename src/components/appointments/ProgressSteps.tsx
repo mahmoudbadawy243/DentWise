@@ -1,8 +1,12 @@
 import { ChevronRightIcon } from "lucide-react"
+import { useParams } from "next/navigation"
+import en from "@/dictionaries/en.json"
+import ar from "@/dictionaries/ar.json"
 
 function ProgressSteps( {currentStep}: {currentStep: number} ) {
-  
-  const STEPS = ["Select Dentist", "Choose Time", "Confirm"]
+  const { locale } = useParams();
+  const dict = (locale === 'ar' ? ar : en) as typeof en;
+  const STEPS = dict.appointments.progress.steps
   return (
     <div className="flex items-center gap-4 mb-8" >
       {STEPS.map( (stepName , index) => {

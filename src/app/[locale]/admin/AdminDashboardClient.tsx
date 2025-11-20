@@ -9,10 +9,15 @@ import AdminStats from "@/components/admin/AdminStats";
 import DoctorsManagement from "@/components/admin/DoctorsManagement";
 import RecentAppointments from "@/components/admin/RecentAppointments";
 import AdminPageLoading from "@/components/admin/AdminPageLoading";
+import { useParams } from "next/navigation";
+import en from "@/dictionaries/en.json";
+import ar from "@/dictionaries/ar.json";
 
 function AdminDashboardClient() {
 
   const { user } = useUser();
+  const { locale } = useParams();
+  const dict = (locale === 'ar' ? ar : en) as typeof en;
 
   const { data: doctors = [] , isLoading: doctorsLoading } = useGetDoctors();
   const { data: appointments = [] , isLoading: appointmentsLoading } = useGetAppointments();
@@ -35,14 +40,14 @@ function AdminDashboardClient() {
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-full border border-primary/20">
                 <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                <span className="text-sm font-medium text-primary">Admin Dashboard</span>
+                <span className="text-sm font-medium text-primary">{dict.admin.badge}</span>
               </div>
               <div>
                 <h1 className="text-4xl font-bold mb-2">
-                  Welcome back, {user?.firstName || "Admin"}!
+                  {dict.admin.welcomeBack}, {user?.firstName || "Admin"}!
                 </h1>
                 <p className="text-muted-foreground">
-                  Manage doctors, oversee appointments, and monitor your dental practice performance.
+                  {dict.admin.subtitle}
                 </p>
               </div>
             </div>

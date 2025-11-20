@@ -10,10 +10,15 @@ import { Badge } from "../ui/badge";
 import { Doctor } from "@prisma/client";
 import AddDoctorDialog from "./AddDoctorDialog";
 import EditDoctorDialog from "./EditDoctorDialog";
+import { useParams } from "next/navigation";
+import en from "@/dictionaries/en.json";
+import ar from "@/dictionaries/ar.json";
 
 function DoctorsManagement() {
 
   const { data: doctors = [] } = useGetDoctors();
+  const { locale } = useParams();
+  const dict = (locale === 'ar' ? ar : en) as typeof en;
 
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
   
@@ -38,9 +43,9 @@ function DoctorsManagement() {
           <div>
             <CardTitle className="flex items-center gap-2">
               <StethoscopeIcon className="size-5 text-primary" />
-              Doctors Management
+              {dict.admin.doctorsManagement.title}
             </CardTitle>
-            <CardDescription>Manage and oversee all doctors in your practice</CardDescription>
+            <CardDescription>{dict.admin.doctorsManagement.description}</CardDescription>
           </div>
 
           <Button
@@ -48,7 +53,7 @@ function DoctorsManagement() {
             className="bg-linear-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary"
           >
             <PlusIcon className="mr-2 size-4" />
-            Add Doctor
+            {dict.admin.doctorsManagement.addDoctor}
           </Button>
         </CardHeader>
 
@@ -74,7 +79,7 @@ function DoctorsManagement() {
                       {doctor.speciality}
 
                       <span className="ml-2 px-2 py-0.5 bg-muted rounded text-xs">
-                        {doctor.gender === "MALE" ? "Male" : "Female"}
+                        {doctor.gender === "MALE" ? dict.admin.doctorsManagement.genderMale : dict.admin.doctorsManagement.genderFemale}
                       </span>
                     </div>
 
@@ -94,13 +99,13 @@ function DoctorsManagement() {
                 <div className="flex items-center gap-3">
                   <div className="text-center">
                     <div className="font-semibold text-primary">{doctor.appointmentsCount}</div>
-                    <div className="text-xs text-muted-foreground">Appointments</div>
+                    <div className="text-xs text-muted-foreground">{dict.admin.doctorsManagement.appointments}</div>
                   </div>
 
                   {doctor.isActive ? (
-                    <Badge className="bg-green-100 text-green-800 hover:bg-green-100">Active</Badge>
+                    <Badge className="bg-green-100 text-green-800 hover:bg-green-100">{dict.admin.doctorsManagement.active}</Badge>
                   ) : (
-                    <Badge variant="secondary">Inactive</Badge>
+                    <Badge variant="secondary">{dict.admin.doctorsManagement.inactive}</Badge>
                   )}
                   <Button
                     size="sm"
@@ -109,7 +114,7 @@ function DoctorsManagement() {
                     onClick={() => handleEditDoctor(doctor)}
                   >
                     <EditIcon className="size-4 mr-1" />
-                    Edit
+                    {dict.admin.doctorsManagement.edit}
                   </Button>
                 </div>
               </div>

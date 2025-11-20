@@ -10,6 +10,9 @@ import { APPOINTMENT_TYPES } from "@/lib/utils"
 import { format } from "date-fns"
 import { useState } from "react"
 import { toast } from "sonner"
+import { useParams } from "next/navigation"
+import en from "@/dictionaries/en.json"
+import ar from "@/dictionaries/ar.json"
 
 type Appointment = {
   id: string;
@@ -49,6 +52,8 @@ function AppointmentsPage() {
   const [bookedAppointment, setBookedAppointment] = useState<Appointment | null>(null);
 
   const bookAppointmentMutation = useBookAppointment();
+  const { locale } = useParams();
+  const dict = (locale === 'ar' ? ar : en) as typeof en;
 
 
   const handleSelectDentist = (dentistId: string) => {
@@ -64,7 +69,7 @@ function AppointmentsPage() {
   const handleBookAppointment = async () => {
 
     if (!selectedDentistId || !selectedDate || !selectedTime) {
-      toast.error("Please fill in all required fields");
+      toast.error(dict.appointments.errors.fillRequired);
       return;
     }
 
@@ -113,7 +118,7 @@ function AppointmentsPage() {
           setSelectedType("");
           setCurrentStep(1);
         },
-        onError: (error) => toast.error(`Failed to book appointment: ${error.message}`),
+        onError: (error) => toast.error(`${dict.appointments.errors.bookFailed}: ${error.message}`),
       }
     );
   };
@@ -128,8 +133,8 @@ function AppointmentsPage() {
 
     {/* header */}
     <div className="mb-8">
-    <h1 className="text-3xl font-bold mb-2">Book an Appointment</h1>
-    <p className="text-muted-foreground" >Find and book with verified dentists in your area</p>
+    <h1 className="text-3xl font-bold mb-2">{dict.appointments.page.title}</h1>
+    <p className="text-muted-foreground" >{dict.appointments.page.subtitle}</p>
     </div>
     
     <ProgressSteps currentStep={currentStep} />

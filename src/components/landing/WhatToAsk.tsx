@@ -1,7 +1,12 @@
 import { MessageCircleIcon, MessageSquareIcon } from "lucide-react";
 import Image from "next/image";
+import getTrans from "@/lib/translation";
+import { getCurrentLocale } from "@/lib/getCurrentLocale";
 
-function WhatToAsk() {
+async function WhatToAsk() {
+  const locale = await getCurrentLocale();
+  const dict = await getTrans(locale);
+  const ex = dict.whatToAsk.examples;
   return (
     <section className="relative py-32 px-6 overflow-hidden bg-linear-to-b from-background to-muted/20" id="what-to-ask">
       <div className="relative z-10 max-w-7xl mx-auto">
@@ -9,20 +14,19 @@ function WhatToAsk() {
         <div className="text-center mb-20 ">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-linear-to-r from-primary/5 to-primary/10 rounded-full border border-primary/10 backdrop-blur-sm mb-6">
             <MessageCircleIcon className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium text-primary">AI-Powered Conversations</span>
+            <span className="text-sm font-medium text-primary">{dict.whatToAsk.badge}</span>
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
             <span className="bg-linear-to-br from-foreground to-foreground/70 bg-clip-text text-transparent">
-              Ask about
+              {dict.whatToAsk.headingLine1}
             </span>
             <br />
             <span className="bg-linear-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-              anything dental
+              {dict.whatToAsk.headingLine2}
             </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            From simple questions to complex concerns, our AI delivers expert-level guidance trained
-            on thousands of real dental cases
+            {dict.whatToAsk.description}
           </p>
         </div>
 
@@ -30,7 +34,7 @@ function WhatToAsk() {
           {/* Left Side - Interactive Chat Examples */}
           <div className="space-y-8">
             <div className="space-y-6">
-              <h3 className="text-2xl font-bold mb-8">Common questions our AI answers:</h3>
+              <h3 className="text-2xl font-bold mb-8">{dict.whatToAsk.commonQuestions}</h3>
 
               {/* Chat Bubble 1 */}
               <div className="group relative">
@@ -41,22 +45,13 @@ function WhatToAsk() {
                     </div>
                     <div className="space-y-3 flex-1">
                       <div className="bg-primary/5 rounded-2xl p-4 border border-primary/10">
-                        <p className="font-semibold text-primary">
-                          `My tooth hurts when I bite down`
-                        </p>
+                        <p className="font-semibold text-primary">{ex[0].question}</p>
                       </div>
                       <div className="bg-muted/30 rounded-2xl p-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Get immediate advice on pain management, possible causes, and when to see
-                          a dentist urgently
-                        </p>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{ex[0].desc}</p>
                         <div className="flex gap-2 mt-3">
-                          <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">
-                            Instant Response
-                          </span>
-                          <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">
-                            Pain Relief
-                          </span>
+                          <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">{ex[0].pills[0]}</span>
+                          <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">{ex[0].pills[1]}</span>
                         </div>
                       </div>
                     </div>
@@ -73,22 +68,13 @@ function WhatToAsk() {
                     </div>
                     <div className="space-y-3 flex-1">
                       <div className="bg-primary/5 rounded-2xl p-4 border border-primary/10">
-                        <p className="font-semibold text-primary">
-                          `How much does teeth whitening cost?`
-                        </p>
+                        <p className="font-semibold text-primary">{ex[1].question}</p>
                       </div>
                       <div className="bg-muted/30 rounded-2xl p-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Compare treatment options, pricing ranges, and find the best whitening
-                          solution for your budget
-                        </p>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{ex[1].desc}</p>
                         <div className="flex gap-2 mt-3">
-                          <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">
-                            Cost Analysis
-                          </span>
-                          <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">
-                            Treatment Options
-                          </span>
+                          <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">{ex[1].pills[0]}</span>
+                          <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">{ex[1].pills[1]}</span>
                         </div>
                       </div>
                     </div>
@@ -105,22 +91,13 @@ function WhatToAsk() {
                     </div>
                     <div className="space-y-3 flex-1">
                       <div className="bg-primary/5 rounded-2xl p-4 border border-primary/10">
-                        <p className="font-semibold text-primary">
-                          `When should I replace my filling?`
-                        </p>
+                        <p className="font-semibold text-primary">{ex[2].question}</p>
                       </div>
                       <div className="bg-muted/30 rounded-2xl p-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Learn about filling lifespan, warning signs of wear, and replacement
-                          timing guidance
-                        </p>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{ex[2].desc}</p>
                         <div className="flex gap-2 mt-3">
-                          <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">
-                            Preventive Care
-                          </span>
-                          <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">
-                            Maintenance
-                          </span>
+                          <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">{ex[2].pills[0]}</span>
+                          <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">{ex[2].pills[1]}</span>
                         </div>
                       </div>
                     </div>

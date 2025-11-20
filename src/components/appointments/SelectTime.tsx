@@ -3,6 +3,9 @@ import { APPOINTMENT_TYPES, getAvailableTimeSlots, getNext5Days } from "@/lib/ut
 import { Button } from "../ui/button";
 import { ChevronLeftIcon, ClockIcon } from "lucide-react";
 import { Card, CardContent } from "../ui/card";
+import { useParams } from "next/navigation";
+import en from "@/dictionaries/en.json";
+import ar from "@/dictionaries/ar.json";
 
 interface TimeSelectionStepProps {
   selectedDentistId: string;
@@ -29,6 +32,8 @@ function SelectTime({
 }: TimeSelectionStepProps) {
 
   const { data: bookedTimeSlots = [] } = useBookedTimeSlots(selectedDentistId, selectedDate);
+  const { locale } = useParams();
+  const dict = (locale === 'ar' ? ar : en) as typeof en;
 
   const availableDates = getNext5Days();
   const availableTimeSlots = getAvailableTimeSlots();
@@ -46,16 +51,16 @@ function SelectTime({
       <div className="flex items-center gap-4 mb-6">
         <Button variant="ghost" onClick={onBack}>
           <ChevronLeftIcon className="w-4 h-4 mr-2" />
-          Back
+          {dict.appointments.selectTime.back}
         </Button>
 
-        <h2 className="text-2xl font-semibold">Select Date & Time</h2>
+        <h2 className="text-2xl font-semibold">{dict.appointments.selectTime.title}</h2>
       </div>
 
       <div className="grid lg:grid-cols-2 gap-8">
         {/* appointment type selection */}
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Appointment Type</h3>
+          <h3 className="text-lg font-medium">{dict.appointments.selectTime.appointmentType}</h3>
           <div className="space-y-3">
             {APPOINTMENT_TYPES.map((type) => (
               <Card
@@ -81,7 +86,7 @@ function SelectTime({
 
         {/* date & time selection */}
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Available Dates</h3>
+          <h3 className="text-lg font-medium">{dict.appointments.selectTime.availableDates}</h3>
 
           {/* date Selection */}
           <div className="grid grid-cols-2 gap-3">
@@ -94,7 +99,7 @@ function SelectTime({
               >
                 <div className="text-center">
                   <div className="font-medium">
-                    {new Date(date).toLocaleDateString("en-US", {
+                    {new Date(date).toLocaleDateString(locale === 'ar' ? 'ar-EG' : 'en-US', {
                       weekday: "short",
                       month: "short",
                       day: "numeric",
@@ -108,7 +113,7 @@ function SelectTime({
           {/* time Selection (only show when date is selected) */}
           {selectedDate && (
             <div className="space-y-3">
-              <h4 className="font-medium">Available Times</h4>
+              <h4 className="font-medium">{dict.appointments.selectTime.availableTimes}</h4>
               <div className="grid grid-cols-3 gap-2">
                 {availableTimeSlots.map((time) => {
                   const isBooked = bookedTimeSlots.includes(time);
@@ -123,7 +128,7 @@ function SelectTime({
                     >
                       <ClockIcon className="w-3 h-3 mr-1" />
                       {time}
-                      {isBooked && " (Booked)"}
+                      {isBooked && ` ${dict.appointments.selectTime.booked}`}
                     </Button>
                   );
                 })}
@@ -136,7 +141,7 @@ function SelectTime({
       {/* continue button (only show when all selections are made) */}
       {selectedType && selectedDate && selectedTime && (
         <div className="flex justify-end">
-          <Button onClick={onContinue}>Review Booking</Button>
+          <Button onClick={onContinue}>{dict.appointments.selectTime.reviewBooking}</Button>
         </div>
       )}
     </div>

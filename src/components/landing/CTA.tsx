@@ -1,35 +1,39 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { MicIcon, CalendarIcon } from "lucide-react";
+import getTrans from "@/lib/translation";
+import { getCurrentLocale } from "@/lib/getCurrentLocale";
 
-function CTA() {
+async function CTA() {
+  const locale = await getCurrentLocale();
+  const dict = await getTrans(locale);
   return (
-    <section className="relative py-20 px-6 overflow-hidden bg-linear-to-br from-muted/10 via-background to-muted/5 text-center md:text-left" id="contact">
+    <section className={`relative py-20 px-6 overflow-hidden bg-linear-to-br from-muted/10 via-background to-muted/5 text-center ${locale === 'ar' ? 'md:text-right' : 'md:text-left'}`} id="contact">
       {/* Subtle Background Pattern */}
       <div className="absolute inset-0 bg-[radial-linear(circle_at_center,hsl(var(--primary)/0.03),transparent_70%)]"></div>
 
       <div className="relative z-10 max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
-          <div className="space-y-6">
-            <div className="space-y-4">
+          <div className={` ${locale === 'ar' ? 'space-y-10 mt-[50px]' : 'space-y-6'}`}>
+            <div className={` ${locale === 'ar' ? 'space-y-8' : 'space-y-4'}`}>
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-linear-to-r from-primary/5 to-primary/10 rounded-full border border-primary/10">
                 <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                <span className="text-xs font-medium text-primary">Ready When You Are</span>
+                <span className="text-xs font-medium text-primary">{dict.cta.badge}</span>
               </div>
 
               <h2 className="text-3xl md:text-4xl font-bold leading-tight">
                 <span className="bg-linear-to-br from-foreground to-foreground/70 bg-clip-text text-transparent">
-                  Your dental health
+                  {dict.cta.headingLine1}
                 </span>
                 <br />
                 <span className="bg-linear-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-                  journey starts here
+                  {dict.cta.headingLine2}
                 </span>
               </h2>
 
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Join 1,200+ patients who trust our AI for instant guidance and personalized care.
+                {dict.cta.description}
               </p>
             </div>
 
@@ -40,7 +44,7 @@ function CTA() {
                 className="px-6 py-3 font-semibold bg-linear-to-r from-primary to-primary/90 hover:from-primary/95 hover:to-primary/85 shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl"
               >
                 <MicIcon className="mr-2 h-4 w-4" />
-                Start free chat
+                {dict.cta.startChat}
               </Button>
               <Button
                 size="lg"
@@ -48,7 +52,7 @@ function CTA() {
                 className="px-6 py-3 font-semibold border border-primary/20 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300 rounded-xl"
               >
                 <CalendarIcon className="mr-2 h-4 w-4" />
-                Book appointment
+                {dict.cta.bookAppointment}
               </Button>
             </div>
           </div>
@@ -60,7 +64,7 @@ function CTA() {
               <div className="absolute -top-4 left-4 bg-linear-to-r from-green-500/90 to-emerald-500/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg z-10">
                 <div className="flex items-center gap-1">
                   <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></div>
-                  Available 24/7
+                  {dict.cta.available247}
                 </div>
               </div>
 

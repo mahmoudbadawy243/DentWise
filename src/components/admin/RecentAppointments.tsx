@@ -4,6 +4,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui
 import { Calendar } from "lucide-react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../ui/table";
 import { Button } from "../ui/button";
+import { useParams } from "next/navigation";
+import en from "@/dictionaries/en.json";
+import ar from "@/dictionaries/ar.json";
 
 
 interface Appointment {
@@ -26,13 +29,15 @@ interface Appointment {
 function RecentAppointments() {
 
   const { data: appointments = [] } = useGetAppointments();
+  const { locale } = useParams();
+  const dict = (locale === 'ar' ? ar : en) as typeof en;
 
   const getStatusBadge = (status: string) => {
     switch (status) {
       case "CONFIRMED":
-        return <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100">Confirmed</Badge>;
+        return <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100">{dict.admin.recentAppointments.status.confirmed}</Badge>;
       case "COMPLETED":
-        return <Badge className="bg-green-100 text-green-800 hover:bg-green-100">Completed</Badge>;
+        return <Badge className="bg-green-100 text-green-800 hover:bg-green-100">{dict.admin.recentAppointments.status.completed}</Badge>;
       default:
         return <Badge variant="secondary">{status}</Badge>;
     }
@@ -43,21 +48,21 @@ function RecentAppointments() {
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Calendar className="h-5 w-5 text-primary" />
-          Recent Appointments
+          {dict.admin.recentAppointments.title}
         </CardTitle>
-        <CardDescription>Monitor and manage all patient appointments</CardDescription>
+        <CardDescription>{dict.admin.recentAppointments.description}</CardDescription>
       </CardHeader>
 
       <CardContent>
         <div className="rounded-lg border">
           <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Patient</TableHead>
-                <TableHead>Doctor</TableHead>
-                <TableHead>Date & Time</TableHead>
-                <TableHead>Reason</TableHead>
-                <TableHead>Status</TableHead>
+            <TableHeader >
+              <TableRow className="mr-[-200px]">
+                <TableHead>{dict.admin.recentAppointments.table.patient}</TableHead>
+                <TableHead>{dict.admin.recentAppointments.table.doctor}</TableHead>
+                <TableHead>{dict.admin.recentAppointments.table.dateTime}</TableHead>
+                <TableHead>{dict.admin.recentAppointments.table.reason}</TableHead>
+                <TableHead>{dict.admin.recentAppointments.table.status}</TableHead>
               </TableRow>
             </TableHeader>
 
@@ -76,7 +81,7 @@ function RecentAppointments() {
                   <TableCell>
                     <div>
                       <div className="font-medium">
-                        {new Date(appointment.date).toLocaleDateString()}
+                        {new Date(appointment.date).toLocaleDateString(locale === 'ar' ? 'ar-EG' : 'en-US')}
                       </div>
                       <div className="text-sm text-muted-foreground">{appointment.time}</div>
                     </div>

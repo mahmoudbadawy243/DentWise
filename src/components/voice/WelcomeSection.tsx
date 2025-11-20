@@ -1,18 +1,25 @@
+"use client"
+
 import { MicIcon } from "lucide-react";
+import { useParams } from "next/navigation";
+import en from "@/dictionaries/en.json";
+import ar from "@/dictionaries/ar.json";
 
 function WelcomeSection() {
+  const { locale } = useParams();
+  const dictBase = (locale === 'ar' ? ar : en) as typeof en;
+  const voice = (dictBase as typeof en).voice || en.voice;
   return (
     <div className="z-10 flex items-center justify-between bg-linear-to-br from-primary/10 via-primary/5 to-background rounded-3xl p-8 border border-primary/20 mb-12 overflow-hidden">
       <div className="space-y-4">
         <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-full border border-primary/20">
           <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-          <span className="text-sm font-medium text-primary">Voice Assistant Ready</span>
+          <span className="text-sm font-medium text-primary">{voice.welcome.badge}</span>
         </div>
         <div>
-          <h1 className="text-4xl font-bold mb-2">AI Voice Assistant</h1>
+          <h1 className="text-4xl font-bold mb-2">{voice.welcome.title}</h1>
           <p className="text-muted-foreground">
-            Talk to your AI dental assistant using natural voice commands. Get instant advice and
-            professional guidance.
+            {voice.welcome.subtitle}
           </p>
         </div>
       </div>
