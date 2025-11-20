@@ -160,7 +160,11 @@ const nextConfig: NextConfig = {
 === because i use prisma, i should write in "package.json" file
     "build": "prisma generate && next build --turbopack",
 
-=== 
+=== to solve proplem of images not displayed after deplying
+    in "next.config.ts" file write 
+    images: { remotePatterns: [ {}, ],
+    unoptimized: true,
+  },};
 
 
 generate this image but in this color #00df02 and its gradients
