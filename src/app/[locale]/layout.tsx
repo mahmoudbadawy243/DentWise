@@ -34,12 +34,12 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({
-  params,
   children,
-}: Readonly<{
+  params,
+}: {
   children: React.ReactNode;
   params: { locale: string };
-}>) {
+}) {
   const localeCandidate = params.locale;
   const locale: LanguageType = localeCandidate === Languages.ARABIC ? 'ar' : 'en';
 
