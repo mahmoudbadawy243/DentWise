@@ -1,175 +1,152 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
 
-## Getting Started
+# 🦷 Dentwise
 
-First, run the development server:
+Dental platform with booking, subscriptions, admin dashboard, and an AI Voice Agent.
+
+<p>
+  <a href="https://nextjs.org/" target="_blank"><img alt="Next.js" src="https://img.shields.io/badge/Next.js-14-black?logo=next.js" /></a>
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript" />
+  <img alt="Tailwind CSS" src="https://img.shields.io/badge/TailwindCSS-3-38B2AC?logo=tailwindcss" />
+  <img alt="Prisma" src="https://img.shields.io/badge/Prisma-ORM-2D3748?logo=prisma" />
+  <img alt="PostgreSQL" src="https://img.shields.io/badge/PostgreSQL-Neon-4169E1?logo=postgresql" />
+  <img alt="Clerk" src="https://img.shields.io/badge/Auth-Clerk-3B82F6" />
+  <img alt="Vapi" src="https://img.shields.io/badge/AI%20Voice-Vapi-6D28D9" />
+</p>
+
+</div>
+
+---
+
+## Table of Contents
+
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Screenshots (Story of App)](#screenshots-story-of-app)
+- [Run the App](#run-the-app)
+- [Acknowledgements](#acknowledgements)
+
+---
+
+## Features
+
+- ✅ Modern Landing Page with gradients & images
+- ✅ Authentication via Clerk (Google, GitHub, Email & Password)
+- ✅ Email Verification (6-digit code)
+- ✅ Appointment Booking System
+- ✅ 3-Step Booking Flow (Dentist → Service & Time → Confirm)
+- ✅ Email Notifications for Bookings (Resend)
+- ✅ Admin Dashboard for Managing Appointments
+- ✅ AI Voice Agent powered by Vapi (Pro Plans only)
+- ✅ Subscription Payments with Clerk (Free + 2 Paid Plans)
+- ✅ Automatic Invoices via Email
+- ✅ Smart Subscription Upgrades (pay only the difference)
+- ✅ PostgreSQL for Data Persistence
+- ✅ Styling with Tailwind CSS + Shadcn
+- ✅ Data Fetching with TanStack Query
+- ✅ Git & GitHub Workflow (branches, PRs, merges)
+- ✅ Dark theme and Light theme
+- ✅ Internationalization (English and Arabic)
+- ✅ Deployment on Vercel
+
+---
+
+## Tech Stack
+
+- **Framework**: Next.js, React, TypeScript
+- **Styling**: Tailwind CSS, shadcn/ui, next-themes
+- **Auth & Users**: Clerk
+- **Database**: PostgreSQL (Neon) + Prisma ORM
+- **Data Fetching**: TanStack Query
+- **Email**: Resend
+- **AI Voice**: Vapi
+
+---
+
+## Screenshots (Story Of App)
+
+<details>
+  <summary><strong>Landing – Hero</strong></summary>
+
+  - Green theme: ![Green Hero](/storyOfApp/grhero.jpg)
+  - Dark theme: ![Dark Hero](/storyOfApp/darkhero.jpg)
+  - Arabic hero: ![Arabic Hero](/storyOfApp/argrhero.jpg)
+</details>
+
+<details>
+  <summary><strong>How It Works</strong></summary>
+
+  - English Green: ![HIW English Green](/storyOfApp/engrhiw.jpg)
+  - Arabic Green: ![HIW Arabic Green](/storyOfApp/argrhiw.jpg)
+  - English Dark: ![HIW English Dark](/storyOfApp/endhiw.jpg)
+</details>
+
+<details>
+  <summary><strong>What to Ask</strong></summary>
+
+  - ![What To Ask](/storyOfApp/endwta.jpg)
+</details>
+
+<details>
+  <summary><strong>Pricing</strong></summary>
+
+  - ![Pricing](/storyOfApp/grenp.jpg)
+</details>
+
+<details>
+  <summary><strong>Contact</strong></summary>
+
+  - ![Contact](/storyOfApp/engrc.jpg)
+</details>
+
+<details>
+  <summary><strong>Admin</strong></summary>
+
+  <em>Admin can add new doctors and view data about doctors and patients.</em>
+
+  - ![Admin](/storyOfApp/admin.jpg)
+</details>
+
+<details>
+  <summary><strong>User Dashboard</strong></summary>
+
+  <em>Dashboard with appointment management.</em>
+
+  - ![Dashboard](/storyOfApp/dashboard.jpg)
+</details>
+
+<details>
+  <summary><strong>AI Voice</strong></summary>
+
+  <em>Available for Pro plan subscribers.</em>
+
+  - ![Voice 1](/storyOfApp/nov.jpg)
+  - ![Voice 2](/storyOfApp/aiv.jpg)
+</details>
+
+<details>
+  <summary><strong>Appointments</strong></summary>
+
+  <em>Select doctor and time, confirm, and receive email confirmation.</em>
+
+  - ![Determine Doctor](/storyOfApp/determindoc.jpg)
+  - ![Determine Time](/storyOfApp/determintime.jpg)
+  - ![Confirm](/storyOfApp/conf.jpg)
+  - ![Confirmation Modal](/storyOfApp/conmod.jpg)
+</details>
+
+<details>
+  <summary><strong>Pro Plans</strong></summary>
+
+  - ![Pro Plans](/storyOfApp/pro.jpg)
+  - ![Stripe](/storyOfApp/str.jpg)
+</details>
+
+---
+
+## Run the App
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+1- npm install
+2- npm run dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
-
-<!-- 
-
-##### "tweakcn" is site that i can choose color-system for my shadcn project
-
---------------------------------------------------
-
-##### Add cursor pointer to buttons by default - this is coming from tailwind docs - write in "globals.css"
-
-@layer base {
-  button:not(:disabled),
-  [role="button"]:not(:disabled) {
-    cursor: pointer;
-  }
-}
-
---------------------------------------------------
-
-###### to apply dark mode of color-system only >>> goto "layout.tsx" and write "dark" as attribute for "body" tag 
-
---------------------------------------------------
-
-###### using icons easly from "npm install lucide-react" 
-
---------------------------------------------------
-
-###### to solve the problem of images that is used in nextjs , goto "next.config.ts" and write the code
-const nextConfig: NextConfig = {
-  /* config options here */
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https", // http or https
-        hostname: "images.unsplash.com", // name of site of images
-      },
-    ], }, }; 
-
---------------------------------------------------
-
-###### Create Prisma
-
-=== npm i prisma --save-dev      // for development
-=== npm i @prisma/client@6.16.2  // for production
-=== npx prisma init
-
-=== in "schema.prisma" file of "prisma" folder write my schema and tables
-
-=== "npx prisma generate"         // to generate client
-
-=== "npx prisma db push"          // to create tables in database
-
-=== i delete "output" attribute from "schema.prisma" file
-=== i delete folder "prisma.config.ts"
-
---------------------------------------------------
-
-###### when user signIn or signUp with clerk >>> saving this data in neon database  
-
-=== 2 methodes to apply that >>> "webHooks" which is the better way , "userSync server action" that i used in this app
-
-=== i create "prisma.ts" in 
-    the purpose of this file and code is to create instance of prisma to interact with it
-    i search in google "nextjs prisma best practice" and copy code and paste in this file
-
-=== i create a folder "actions" in "lib" folder then create "user.ts" file
-    the purpose of this file is to create server actions where i can implement syncUser to create user in database
-
-=== i create "UserSync.ts" file in "components" folder where i call userSync function
-
-=== in "layout.tsx" file i wrapped the chidren with "UserSync" component 
-    to run automatically when app start to run to apply "userSync" concept
-
---------------------------------------------------
-
-###### TanStack Query
-
-=== npm i @tanstack/react-query
-=== in "components" folder create "providers" folder then create "TanStackProvider.tsx" file
-=== search on google "tanstack query nextjs router" then from docs of tanStack from initial setup
-    copy code and paste in "TanStackProvider.tsx" file
-=== in "layout.tsx" file i wrapped the all children with "TanStackProvider" component
-
---------------------------------------------------
-
-####### Vapi AI
-
-=== goto vapi site
-=== create "NEXT_PUBLIC_VAPI_API_KEY" and "NEXT_PUBLIC_VAPI_ASSISTANT_ID" and write them in ".env" file
- to "web calls" especially client-side and create assistant and get assistant id
-=== to install vapi >>> "npm i @vapi-ai/web"
-=== in lib folder create "vapi.ts" file to create instance of vapi
-
-
---------------------------------------------------
-
-####### Resend
-
-=== "npm i @react-email/components" "npm i resend" "@react-email/render"
-=== create instance of resend by creating "resend.ts" file in "lib" folder and paste code from resend site
-=== create "RESEND_API_KEY" in ".env" file
-=== create end-point by creating "api" folder in this name in "app" folder
-    then create "send-appoint-email" folder in "api" folder
-    then create "route.ts" in this name
-=== in develop case i can only recieve email on gmail that i loggin with it in resend site
-
---------------------------------------------------
-
-######### multi Theme
-
-=== npm install next-themes
-=== create "theme-provider.tsx" file in "providers" folder
-=== search on google "shadcn nextjs themes" then from docs copy code and paste in "theme-provider.tsx" file
-=== Wrap layout with <ThemeProvider>
-=== Create "ToogleSwitch" component
-=== import { useTheme } from "next-themes"
-    const { setTheme } = useTheme()
-    onClick={() => setTheme("light")
-
---------------------------------------------------
-
-######### deploy
-
-=== because i use prisma, i should write in "package.json" file
-    "build": "prisma generate && next build --turbopack",
-
-=== to solve proplem of images not displayed after deplying
-    in "next.config.ts" file write 
-    images: { remotePatterns: [ {}, ],
-    unoptimized: true,
-  },};
-
-
-generate this image but in this color #00df02 and its gradients
-
-
-
-
- -->

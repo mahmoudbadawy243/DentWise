@@ -47,9 +47,7 @@ export default async function RootLayout({
     <TanStackProvider>
     <ClerkProvider >
       <html lang={locale} dir={locale === Languages.ARABIC ? Directions.RTL : Directions.LTR} >
-        <body className={
-          locale === Languages.ARABIC ? cairo.className : geistSans.className
-        }>
+        <body className={ locale === Languages.ARABIC ? cairo.className : geistSans.className} >
             <ThemeProvider
               attribute="class"
               defaultTheme="system"
